@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviving Craniosacral Therapy | Av Singh</title>
+    
+    <!-- Google Fonts for Health Club Style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <style>
         /* --- CSS Variables for Easy Color Changes --- */
         :root {
@@ -13,7 +19,8 @@
             --text-color: #333333;
             --light-text: #666666;
             --white: #ffffff;
-            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-main: 'Montserrat', sans-serif;
+            --font-elegant: 'Cormorant Garamond', serif;
         }
 
         /* --- Global Reset & Typography --- */
@@ -69,9 +76,16 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--primary-color);
             letter-spacing: 1px;
+        }
+
+        .logo-reviving {
+            font-family: var(--font-elegant);
+            font-weight: 600;
+            font-size: 1.8rem;
+            color: var(--primary-color);
         }
 
         .nav-links {
@@ -102,6 +116,13 @@
             font-weight: 300;
             margin-bottom: 20px;
             color: var(--primary-color);
+        }
+
+        .hero h1 .reviving {
+            font-family: var(--font-elegant);
+            font-weight: 600;
+            font-size: 3.5rem;
+            display: block;
         }
 
         .hero h2 {
@@ -163,21 +184,6 @@
             background-color: var(--white);
             text-align: center;
             position: relative;
-        }
-
-        .about-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
 
         .section-title {
@@ -280,6 +286,7 @@
             padding: 12px 30px;
             border-radius: 30px;
             font-weight: 600;
+            cursor: pointer;
         }
 
         .contact-btn:hover {
@@ -313,6 +320,10 @@
                 font-size: 2.2rem;
             }
 
+            .hero h1 .reviving {
+                font-size: 2.8rem;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -325,11 +336,13 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Reviving Craniosacral Therapy</div>
+                <div class="logo">
+                    <span class="logo-reviving">Reviving</span> Craniosacral Therapy
+                </div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="#approaches">Approaches</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -342,14 +355,17 @@
         <div class="container">
             <div style="display: flex; flex-wrap: wrap; align-items: center;">
                 <div class="hero-content">
-                    <h1>Reviving Craniosacral Therapy</h1>
+                    <h1>
+                        <span class="reviving">Reviving</span>
+                        Craniosacral Therapy
+                    </h1>
                     <h2>With Av Singh</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Restore balance through gentle, mindful touch.</p>
                     <a href="#contact" class="btn">Book a Session</a>
                 </div>
                 <div class="hero-image">
-                    <!-- Therapeutic Image: Peaceful hands/therapy setting -->
-                    <img src="https://images.unsplash.com/photo-1544367563-12123d8965cd?q=80&w=2070&auto=format&fit=crop" alt="Craniosacral therapy session">
+                    <!-- Sunset Image -->
+                    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2070&auto=format&fit=crop" alt="Peaceful sunset">
                 </div>
             </div>
         </div>
@@ -361,10 +377,6 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <!-- Practitioner Photo -->
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2070&auto=format&fit=crop" alt="Av Singh, Craniosacral Therapist">
-            </div>
             <h2 class="section-title">About Av Singh</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. 
@@ -374,10 +386,10 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
+    <!-- Therapeutic Approaches Section -->
+    <section id="approaches" class="services">
         <div class="container">
-            <h2 class="section-title" style="text-align: center;">Therapeutic Services</h2>
+            <h2 class="section-title" style="text-align: center;">Therapeutic Approaches</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
@@ -427,7 +439,9 @@
         <div class="container">
             <h2 class="section-title">Begin Your Journey</h2>
             <p>Ready to find relief? Contact me to schedule your consultation.</p>
-            <a href="mailto:av@revivingcraniosacral.com" class="contact-btn">Email Av Singh</a>
+            <!-- Spam Protected Email Button -->
+            <button class="contact-btn" onclick="revealEmail()">Email Av Singh</button>
+            <p id="email-display" style="margin-top: 15px; font-size: 0.9rem; display: none;"></p>
         </div>
     </section>
 
@@ -437,6 +451,25 @@
             <p>&copy; 2026 Reviving Craniosacral Therapy | Av Singh. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Email Protection Script -->
+    <script>
+        function revealEmail() {
+            const emailParts = ['av', 'revivingcraniosacral', 'com'];
+            const email = emailParts[0] + '@' + emailParts[1] + '.' + emailParts[2];
+            const emailDisplay = document.getElementById('email-display');
+            emailDisplay.textContent = email;
+            emailDisplay.style.display = 'block';
+            emailDisplay.style.color = '#fff';
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(email).then(() => {
+                setTimeout(() => {
+                    alert('Email copied to clipboard!');
+                }, 100);
+            });
+        }
+    </script>
 
 </body>
 </html>
