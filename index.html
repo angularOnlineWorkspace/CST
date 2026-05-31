@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craniosacral Therapy | Dr. Real</title>
+    <title>Reviving Craniosacral Therapy | Av Singh</title>
     <style>
         /* --- CSS Variables for Easy Color Changes --- */
         :root {
             --primary-color: #5D8A8E; /* Calming Teal */
             --secondary-color: #F4F1EA; /* Warm Off-White Background */
+            --accent-color: #A8C5C7; /* Lighter Teal Accent */
             --text-color: #333333;
             --light-text: #666666;
             --white: #ffffff;
@@ -103,6 +104,13 @@
             color: var(--primary-color);
         }
 
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: var(--light-text);
+        }
+
         .hero p {
             font-size: 1.2rem;
             color: var(--light-text);
@@ -138,10 +146,38 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
+        /* --- Decorative Wave Divider --- */
+        .wave-divider {
+            width: 100%;
+            height: 100px;
+            background-image: url('https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+
         /* --- About Section --- */
         .about {
             background-color: var(--white);
             text-align: center;
+            position: relative;
+        }
+
+        .about-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .section-title {
@@ -158,6 +194,10 @@
         }
 
         /* --- Services Section --- */
+        .services {
+            background-color: var(--secondary-color);
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -178,8 +218,43 @@
             transform: translateY(-5px);
         }
 
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .service-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .service-card h3 {
             margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* --- Testimonial Section --- */
+        .testimonials {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .testimonial-card {
+            background: var(--secondary-color);
+            padding: 40px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 700px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            margin-top: 20px;
+            font-weight: 600;
             color: var(--primary-color);
         }
 
@@ -239,7 +314,7 @@
             }
 
             .nav-links {
-                display: none; /* Simple hiding for mobile, ideally replace with hamburger menu */
+                display: none;
             }
         }
     </style>
@@ -250,11 +325,12 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">CranioSacral Therapy</div>
+                <div class="logo">Reviving Craniosacral Therapy</div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -266,47 +342,82 @@
         <div class="container">
             <div style="display: flex; flex-wrap: wrap; align-items: center;">
                 <div class="hero-content">
-                    <h1>Restoring Balance Through Gentle Touch</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    <h1>Reviving Craniosacral Therapy</h1>
+                    <h2>With Av Singh</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Restore balance through gentle, mindful touch.</p>
                     <a href="#contact" class="btn">Book a Session</a>
                 </div>
                 <div class="hero-image">
-                    <!-- Placeholder Image: Replace 'src' with your own image URL -->
-                    <img src="https://images.unsplash.com/photo-1544367563-12123d8965cd?q=80&w=2070&auto=format&fit=crop" alt="Peaceful therapy setting">
+                    <!-- Therapeutic Image: Peaceful hands/therapy setting -->
+                    <img src="https://images.unsplash.com/photo-1544367563-12123d8965cd?q=80&w=2070&auto=format&fit=crop" alt="Craniosacral therapy session">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Decorative Divider -->
+    <div class="wave-divider"></div>
+
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About My Practice</h2>
+            <!-- Practitioner Photo -->
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2070&auto=format&fit=crop" alt="Av Singh, Craniosacral Therapist">
+            </div>
+            <h2 class="section-title">About Av Singh</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. 
-                Cras venenatis euismod malesuada. Nullam ac odio ante. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, 
-                adipiscing nec, ultricies sed, dolor.
+                Cras venenatis euismod malesuada. With years of dedicated practice and training, I am committed to helping 
+                clients find relief and restore their natural balance through the gentle art of craniosacral therapy.
             </p>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services">
+    <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title" style="text-align: center;">Therapeutic Approaches</h2>
+            <h2 class="section-title" style="text-align: center;">Therapeutic Services</h2>
             <div class="services-grid">
                 <div class="service-card">
+                    <div class="service-icon">
+                        <!-- Service Icon: Calm/Nature -->
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop" alt="Standard Craniosacral">
+                    </div>
                     <h3>Standard Craniosacral</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gentle manipulation to release tension and restore rhythm.</p>
                 </div>
                 <div class="service-card">
+                    <div class="service-icon">
+                        <!-- Service Icon: Child/Healing -->
+                        <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?q=80&w=2000&auto=format&fit=crop" alt="Pediatric Care">
+                    </div>
                     <h3>Pediatric Care</h3>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Ut enim ad minim veniam, specially adapted techniques for infants and children experiencing birth trauma or developmental challenges.</p>
                 </div>
                 <div class="service-card">
+                    <div class="service-icon">
+                        <!-- Service Icon: Deep Healing -->
+                        <img src="https://images.unsplash.com/photo-1515023115689-589c33041697?q=80&w=2070&auto=format&fit=crop" alt="Trauma Release">
+                    </div>
                     <h3>Trauma Release</h3>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate. Supporting the body's natural ability to release stored traumatic energy.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Experiences</h2>
+            <div class="testimonial-card">
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. The sessions with Av have been transformative for my chronic pain."</p>
+                <div class="testimonial-author">— Client Name</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Ut enim ad minim veniam, I felt deeply relaxed and heard. Highly recommend Reviving Craniosacral Therapy."</p>
+                <div class="testimonial-author">— Another Client</div>
             </div>
         </div>
     </section>
@@ -316,14 +427,14 @@
         <div class="container">
             <h2 class="section-title">Begin Your Journey</h2>
             <p>Ready to find relief? Contact me to schedule your consultation.</p>
-            <a href="mailto:your-email@example.com" class="contact-btn">Email Me</a>
+            <a href="mailto:av@revivingcraniosacral.com" class="contact-btn">Email Av Singh</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Craniosacral Therapy by Dr. Real. All rights reserved.</p>
+            <p>&copy; 2026 Reviving Craniosacral Therapy | Av Singh. All rights reserved.</p>
         </div>
     </footer>
 
