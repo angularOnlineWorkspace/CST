@@ -17,6 +17,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
+            // IMPORTANT: Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS Public Key
             emailjs.init("YOUR_PUBLIC_KEY");
         })();
     </script>
@@ -54,6 +55,9 @@
         /* --- Training Notice --- */
         .training-notice { background-color: #eef5f5; color: var(--primary-color); text-align: center; padding: 12px 0; font-size: 0.9rem; border-bottom: 1px solid rgba(93, 138, 142, 0.2); }
         .training-notice strong { font-weight: 600; color: var(--forest-green); }
+        
+        /* Utility class to hide elements dynamically */
+        .hidden { display: none !important; }
 
         /* --- Hero --- */
         .hero { position: relative; min-height: 75vh; display: flex; align-items: center; background-image: url('images/hero-sunset2.jpg'); background-size: cover; background-position: center; padding: 0; }
@@ -168,10 +172,10 @@
         </div>
     </header>
 
-    <!-- Training Notice -->
-    <div class="training-notice">
+    <!-- Training Notice (Dynamic Visibility) -->
+    <div id="dynamic-training-notice" class="training-notice">
         <div class="container">
-            <strong>Special Introductory Offer:</strong> Currently completing advanced certification training. Sessions offered at a reduced rate to support clinical practice development.
+            <!-- Content will be injected by JS -->
         </div>
     </div>
 
@@ -248,7 +252,8 @@
             <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">Cost & Location</h2>
             <div class="cost-info">
                 <div class="cost-card">
-                    <div class="offer-badge">Introductory Offer</div>
+                    <!-- Dynamic Offer Badge -->
+                    <div id="dynamic-offer-badge" class="offer-badge">Introductory Offer</div>
                     <h3>Initial Consultation</h3>
                     <div class="price-container">
                         <span class="old-price">£65</span>
@@ -294,19 +299,9 @@
                         <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
                         <div class="form-group"><input type="tel" name="phone" placeholder="Phone (Optional)"></div>
                         <div class="form-group">
-                            <select name="timeslot" required>
-                                <option value="" disabled selected>Preferred Timeslot (PM)</option>
-                                <option value="Mon 1pm">Monday 1:00 PM</option>
-                                <option value="Mon 2pm">Monday 2:00 PM</option>
-                                <option value="Mon 3pm">Monday 3:00 PM</option>
-                                <option value="Tue 1pm">Tuesday 1:00 PM</option>
-                                <option value="Tue 2pm">Tuesday 2:00 PM</option>
-                                <option value="Wed 1pm">Wednesday 1:00 PM</option>
-                                <option value="Wed 2pm">Wednesday 2:00 PM</option>
-                                <option value="Thu 1pm">Thursday 1:00 PM</option>
-                                <option value="Thu 2pm">Thursday 2:00 PM</option>
-                                <option value="Fri 1pm">Friday 1:00 PM</option>
-                                <option value="Fri 2pm">Friday 2:00 PM</option>
+                            <select name="timeslot" id="dynamic-timeslot-select" required>
+                                <option value="" disabled selected>Loading timeslots...</option>
+                                <!-- Options will be injected by JS -->
                             </select>
                         </div>
                         <div class="form-group"><textarea name="message" placeholder="Briefly describe your needs..." required></textarea></div>
@@ -346,6 +341,68 @@
 
     <!-- Scripts -->
     <script>
+        // --- 1. Configuration & Dynamic Logic ---
+        async function applyConfiguration() {
+            try {
+                const res = await fetch('content/all-text.html');
+                if (!res.ok) throw new Error("Config file not found");
+                
+                const html = await res.text();
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+
+                // A. Handle Training Notice
+                const showNotice = temp.querySelector('#show-training-notice')?.textContent.trim().toLowerCase() === 'true';
+                const noticeContainer = document.getElementById('dynamic-training-notice');
+                const noticeText = temp.querySelector('#training-notice-text')?.innerHTML || '';
+                
+                if (!showNotice) {
+                    noticeContainer.classList.add('hidden');
+                } else {
+                    noticeContainer.classList.remove('hidden');
+                    noticeContainer.querySelector('.container').innerHTML = noticeText;
+                }
+
+                // B. Handle Offer Badge
+                const showOffer = temp.querySelector('#show-special-offer')?.textContent.trim().toLowerCase() === 'true';
+                const badge = document.getElementById('dynamic-offer-badge');
+                if (!showOffer) {
+                    badge.classList.add('hidden');
+                } else {
+                    badge.classList.remove('hidden');
+                }
+
+                // C. Handle Timeslots
+                const showTimeslots = temp.querySelector('#show-timeslots')?.textContent.trim().toLowerCase() === 'true';
+                const select = document.getElementById('dynamic-timeslot-select');
+                
+                if (showTimeslots) {
+                    const rawOptions = temp.querySelector('#timeslot-options')?.textContent.trim() || '';
+                    const optionsArray = rawOptions.split('|').map(opt => opt.trim()).filter(opt => opt.length > 0);
+                    
+                    // Clear default loading option
+                    select.innerHTML = '<option value="" disabled selected>Select a Time</option>';
+                    
+                    optionsArray.forEach(opt => {
+                        const optionEl = document.createElement('option');
+                        optionEl.value = opt;
+                        optionEl.textContent = opt;
+                        select.appendChild(optionEl);
+                    });
+                } else {
+                    // Hide the select field entirely if timeslots are disabled
+                    select.closest('.form-group').classList.add('hidden');
+                }
+
+            } catch (error) {
+                console.error("Failed to load configuration:", error);
+                // Fallback: Show defaults if config fails
+                document.getElementById('dynamic-training-notice').classList.remove('hidden');
+                document.getElementById('dynamic-offer-badge').classList.remove('hidden');
+            }
+        }
+
+        // --- 2. Email Reveal Function ---
         function revealEmail() {
             const emailParts = ['av', 'revivingcraniosacral', 'com'];
             const email = emailParts[0] + '@' + emailParts[1] + '.' + emailParts[2];
@@ -357,6 +414,7 @@
             });
         }
 
+        // --- 3. Form Submission ---
         document.getElementById('booking-form').addEventListener('submit', function(event) {
             event.preventDefault();
             const btn = document.getElementById('submit-btn');
@@ -364,8 +422,10 @@
             btn.disabled = true;
             btn.textContent = 'Sending...';
             statusMsg.style.display = 'none';
-            const serviceID = 'YOUR_SERVICE_ID';
-            const templateID = 'YOUR_TEMPLATE_ID';
+            
+            const serviceID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS Service ID
+            const templateID = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS Template ID
+            
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
                     btn.textContent = 'Sent!';
@@ -373,7 +433,11 @@
                     statusMsg.style.color = '#fff';
                     statusMsg.style.display = 'block';
                     this.reset();
-                    setTimeout(() => { btn.disabled = false; btn.textContent = 'Send Request'; statusMsg.style.display = 'none'; }, 5000);
+                    setTimeout(() => { 
+                        btn.disabled = false; 
+                        btn.textContent = 'Send Request'; 
+                        statusMsg.style.display = 'none'; 
+                    }, 5000);
                 }, (err) => {
                     btn.disabled = false;
                     btn.textContent = 'Send Request';
@@ -384,7 +448,7 @@
                 });
         });
 
-        // --- CONTENT LOADER SCRIPT (Your Efficient Version) ---
+        // --- 4. Content Loader (Text Sections) ---
         document.querySelectorAll('[data-include]').forEach(async el => {
           const file = el.getAttribute('data-include');
           const section = el.getAttribute('data-section');
@@ -403,6 +467,9 @@
             el.innerHTML = '';
           }
         });
+
+        // Initialize Configuration on Load
+        window.addEventListener('DOMContentLoaded', applyConfiguration);
     </script>
 </body>
 </html>
