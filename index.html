@@ -31,7 +31,8 @@
             --light-text: #666666;
             --white: #ffffff;
             --offer-color: #D9534F;
-            --glass-bg: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+            /* Softer glass background */
+            --glass-bg: rgba(255, 255, 255, 0.65); 
             --font-main: 'Montserrat', sans-serif;
             --font-elegant: 'Cormorant Garamond', serif;
         }
@@ -52,8 +53,6 @@
         ul { list-style: none; }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Reduced padding for tighter look */
         section { padding: 50px 0; }
 
         /* --- Header --- */
@@ -95,35 +94,32 @@
             color: var(--forest-green);
         }
 
-        /* --- Hero Section (Fixed Legibility) --- */
+        /* --- Hero Section (Optimized for Blend & Contrast) --- */
         .hero {
             position: relative;
-            min-height: 75vh; /* Slightly taller */
+            min-height: 75vh;
             display: flex;
             align-items: center;
-            /* Full background image */
+            /* Updated Image Name */
             background-image: url('images/hero-sunset2.jpg');
             background-size: cover;
             background-position: center;
-            padding: 0; /* Remove default section padding */
+            padding: 0;
         }
 
-        /* No global overlay needed anymore, handled by the box */
-        
         .hero-content {
-            /* Left alignment with generous padding */
             margin-left: 5%; 
             max-width: 550px;
             width: 100%;
             
-            /* Glassmorphism Box */
+            /* Softer Glass Effect */
             background: var(--glass-bg);
-            backdrop-filter: blur(10px); /* Blurs the image behind the text */
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px); /* Increased blur for better blend */
+            -webkit-backdrop-filter: blur(12px);
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            /* No border to reduce "boxiness" */
             
             position: relative;
             z-index: 2;
@@ -135,6 +131,8 @@
             margin-bottom: 5px;
             color: var(--primary-color);
             line-height: 1.1;
+            /* Text Shadow for Contrast */
+            text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.8);
         }
 
         .hero h1 .revive-word {
@@ -142,6 +140,7 @@
             font-weight: 600;
             font-size: 3.8rem;
             display: block;
+            text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.9);
         }
 
         .hero h2 {
@@ -150,13 +149,16 @@
             margin-bottom: 15px;
             color: var(--forest-green);
             font-style: italic;
+            text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.8);
         }
 
         .hero p {
             font-size: 1.05rem;
-            color: var(--text-color); /* Darker text for contrast against white box */
+            color: var(--text-color);
             margin-bottom: 25px;
             line-height: 1.6;
+            /* Subtle shadow for paragraph readability */
+            text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.7);
         }
 
         .btn {
@@ -170,6 +172,7 @@
             cursor: pointer;
             border: none;
             font-size: 0.95rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .btn:hover { background-color: #4a6f72; }
 
@@ -422,23 +425,6 @@
 
         .email-reveal { text-align: center; }
         .email-reveal p { margin-bottom: 12px; font-size: 0.85rem; }
-
-        /* --- Image Credits --- */
-        .image-credits {
-            background-color: var(--secondary-color);
-            padding: 20px 0;
-            text-align: center;
-            border-top: 1px solid rgba(0,0,0,0.05);
-        }
-        .credits-text {
-            font-size: 0.7rem;
-            color: #888;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.4;
-        }
-        .credits-text a { color: #888; text-decoration: underline; }
-        .credits-text a:hover { color: var(--primary-color); }
 
         /* --- Footer --- */
         footer { 
@@ -702,8 +688,7 @@
         </div>
     </section>
 
-
-
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2026 ReVive Craniosacral Therapy | Forest of Dean. All rights reserved.</p>
