@@ -31,8 +31,6 @@
             --light-text: #666666;
             --white: #ffffff;
             --offer-color: #D9534F;
-            /* Softer glass background */
-            --glass-bg: rgba(255, 255, 255, 0.65); 
             --font-main: 'Montserrat', sans-serif;
             --font-elegant: 'Cormorant Garamond', serif;
         }
@@ -94,7 +92,7 @@
             color: var(--forest-green);
         }
 
-        /* --- Hero Section (Optimized for Blend & Contrast) --- */
+        /* --- Hero Section (Gradient Overlay Method) --- */
         .hero {
             position: relative;
             min-height: 75vh;
@@ -107,74 +105,85 @@
             padding: 0;
         }
 
+        /* 
+           THE GRADIENT OVERLAY 
+           This creates a dark fade from left to right, and bottom to top.
+           This replaces the white box entirely.
+        */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* Linear Gradient: Dark on left (where text is), fading to transparent on right/top */
+            background: linear-gradient(
+                90deg, 
+                rgba(20, 30, 25, 0.85) 0%,   /* Dark left side */
+                rgba(20, 30, 25, 0.6) 40%,   /* Mid fade */
+                rgba(20, 30, 25, 0.1) 70%,   /* Almost transparent right */
+                rgba(20, 30, 25, 0) 100%     /* Transparent far right */
+            );
+            z-index: 1;
+        }
+
         .hero-content {
-            margin-left: 5%; 
-            max-width: 550px;
+            /* Position text on the left where the gradient is darkest */
+            margin-left: 8%; 
+            max-width: 600px;
             width: 100%;
-            
-            /* Softer Glass Effect */
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px); /* Increased blur for better blend */
-            -webkit-backdrop-filter: blur(12px);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); /* Softer shadow */
-            /* No border to reduce "boxiness" */
-            
             position: relative;
-            z-index: 2;
+            z-index: 2; /* Above the gradient */
+            padding: 20px 0; /* No box padding needed */
         }
 
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 300;
             margin-bottom: 5px;
-            color: var(--primary-color);
+            color: var(--white); /* White text for contrast against dark gradient */
             line-height: 1.1;
-            /* Text Shadow for Contrast */
-            text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Soft shadow for depth */
         }
 
         .hero h1 .revive-word {
             font-family: var(--font-elegant);
             font-weight: 600;
-            font-size: 3.8rem;
+            font-size: 4.2rem;
             display: block;
-            text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.9);
+            color: #fff; /* Ensure white */
         }
 
         .hero h2 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 400;
-            margin-bottom: 15px;
-            color: var(--forest-green);
+            margin-bottom: 20px;
+            color: #e0f2f1; /* Very light teal/white */
             font-style: italic;
-            text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.05rem;
-            color: var(--text-color);
-            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: #f0f0f0; /* Light grey/white */
+            margin-bottom: 30px;
             line-height: 1.6;
-            /* Subtle shadow for paragraph readability */
-            text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.7);
+            max-width: 550px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
         }
 
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
             color: var(--white);
-            padding: 10px 25px;
+            padding: 12px 30px;
             border-radius: 25px;
             font-weight: 600;
             transition: background 0.3s ease;
             cursor: pointer;
             border: none;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .btn:hover { background-color: #4a6f72; }
+        .btn:hover { background-color: #4a6f72; transform: translateY(-2px); }
 
         /* --- Wave Divider --- */
         .wave-divider {
@@ -462,8 +471,13 @@
                 margin-right: 0;
                 margin-top: 20px;
                 margin-bottom: 20px;
-                padding: 25px;
+                padding: 20px;
                 text-align: center;
+                /* On mobile, we might need a full dark overlay */
+            }
+            .hero::before {
+                /* Full dark overlay on mobile for readability */
+                background: rgba(20, 30, 25, 0.7);
             }
             .hero h1 { font-size: 2.2rem; }
             .hero h1 .revive-word { font-size: 2.8rem; }
