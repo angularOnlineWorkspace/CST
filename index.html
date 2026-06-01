@@ -582,5 +582,55 @@
         });
     </script>
 
+
+<h2>Contact Form</h2>
+  
+  <form id="contact-form">
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="email" id="email" placeholder="Your Email" required />
+    <textarea id="message" rows="6" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p id="status"></p>
+
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script>
+    // Initialize EmailJS with your Public Key
+    emailjs.init({
+      publicKey: "YOUR_PUBLIC_KEY_HERE",   // ← Replace this
+    });
+
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('status');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+//phone
+
+      const templateParams = {
+        from_name: document.getElementById('name').value,
+        from_email: document.getElementById('email').value,
+        message: document.getElementById('message').value,
+		
+      };
+
+      status.textContent = "Sending...";
+
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)  // ← Replace both
+        .then(() => {
+          status.textContent = "✅ Message sent successfully!";
+          form.reset();
+        })
+        .catch((error) => {
+          console.error(error);
+          status.textContent = "❌ Failed to send. Please try again.";
+        });
+    });
+  </script>
+  
 </body>
 </html>
