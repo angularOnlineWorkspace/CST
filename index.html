@@ -31,6 +31,7 @@
             --light-text: #666666;
             --white: #ffffff;
             --offer-color: #D9534F;
+            --glass-bg: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
             --font-main: 'Montserrat', sans-serif;
             --font-elegant: 'Cormorant Garamond', serif;
         }
@@ -94,42 +95,44 @@
             color: var(--forest-green);
         }
 
-        /* --- Hero Section (Full Width & Blended) --- */
+        /* --- Hero Section (Fixed Legibility) --- */
         .hero {
             position: relative;
-            min-height: 70vh; /* Slightly shorter, more prominent */
+            min-height: 75vh; /* Slightly taller */
             display: flex;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
             /* Full background image */
-            background-image: url('images/hero-sunset2.jpg');
+            background-image: url('images/hero-sunset.jpg');
             background-size: cover;
             background-position: center;
+            padding: 0; /* Remove default section padding */
         }
 
-        /* Gradient Overlay for readability and blending */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, rgba(244, 241, 234, 0.95) 0%, rgba(244, 241, 234, 0.7) 40%, rgba(244, 241, 234, 0.2) 100%);
-            z-index: 1;
-        }
-
+        /* No global overlay needed anymore, handled by the box */
+        
         .hero-content {
-            flex: 1;
-            padding-left: 5%;
-            padding-right: 5%;
+            /* Left alignment with generous padding */
+            margin-left: 5%; 
+            max-width: 550px;
+            width: 100%;
+            
+            /* Glassmorphism Box */
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px); /* Blurs the image behind the text */
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            
             position: relative;
             z-index: 2;
-            max-width: 600px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 300;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             color: var(--primary-color);
             line-height: 1.1;
         }
@@ -137,22 +140,23 @@
         .hero h1 .revive-word {
             font-family: var(--font-elegant);
             font-weight: 600;
-            font-size: 4rem;
+            font-size: 3.8rem;
             display: block;
         }
 
         .hero h2 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 400;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--forest-green);
+            font-style: italic;
         }
 
         .hero p {
-            font-size: 1.1rem;
-            color: var(--light-text);
+            font-size: 1.05rem;
+            color: var(--text-color); /* Darker text for contrast against white box */
             margin-bottom: 25px;
-            max-width: 500px;
+            line-height: 1.6;
         }
 
         .btn {
@@ -179,7 +183,7 @@
             opacity: 0.15;
             mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-            margin-top: -20px; /* Pull up slightly to blend */
+            margin-top: -20px;
         }
 
         /* --- About --- */
@@ -467,9 +471,16 @@
         /* --- Responsive --- */
         @media (max-width: 768px) {
             .hero { min-height: 60vh; }
-            .hero-content { padding: 0 20px; text-align: center; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero h1 .revive-word { font-size: 3rem; }
+            .hero-content { 
+                margin-left: 0; 
+                margin-right: 0;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                padding: 25px;
+                text-align: center;
+            }
+            .hero h1 { font-size: 2.2rem; }
+            .hero h1 .revive-word { font-size: 2.8rem; }
             .nav-links { display: none; }
             .contact-options { flex-direction: column; }
             .training-logos { gap: 15px; }
@@ -657,7 +668,7 @@
                             <input type="tel" name="phone" placeholder="Phone (Optional)">
                         </div>
                         <div class="form-group">
-                            <select name="timeslot" disabled>
+                            <select name="timeslot" required>
                                 <option value="" disabled selected>Preferred Timeslot (PM)</option>
                                 <option value="Mon 1pm">Monday 1:00 PM</option>
                                 <option value="Mon 2pm">Monday 2:00 PM</option>
