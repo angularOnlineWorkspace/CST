@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReVive Craniosacral Therapy | Forest of Dean</title>
     
-    <!-- Favicon: Simple Forest Tree Icon -->
-    <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=32&auto=format&fit=crop">
+    <!-- Favicon: Hands holding light/gentle touch -->
+    <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?q=80&w=32&auto=format&fit=crop">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,17 +18,16 @@
     <script type="text/javascript">
         (function() {
             // REPLACE 'YOUR_PUBLIC_KEY' WITH YOUR ACTUAL EMAILJS PUBLIC KEY
-            emailjs.init("YOUR_PUBLIC_KEY");
+            emailjs.init("jxWVHLDPtZYPoB3zn");
         })();
     </script>
     
     <style>
         /* --- CSS Variables --- */
         :root {
-            --primary-color: #5D8A8E; /* Calming Teal */
-            --forest-green: #3A5A40; /* Deep Forest Green */
-            --secondary-color: #F4F1EA; /* Warm Off-White Background */
-            --accent-color: #A8C5C7; /* Lighter Teal Accent */
+            --primary-color: #5D8A8E;
+            --secondary-color: #F4F1EA;
+            --accent-color: #A8C5C7;
             --text-color: #333333;
             --light-text: #666666;
             --white: #ffffff;
@@ -79,27 +78,10 @@
         .hero {
             display: flex; align-items: center; justify-content: center;
             min-height: 80vh;
-            /* Subtle forest gradient overlay */
-            background: linear-gradient(to right, var(--secondary-color) 40%, var(--white) 40%),
-                        url('https://images.unsplash.com/photo-1448375240586-dfd8d395ea6c?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        /* Overlay to make text readable over forest bg */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(244, 241, 234, 0.85); /* Semi-transparent secondary color */
-            z-index: 1;
+            background: linear-gradient(to right, var(--secondary-color) 50%, var(--white) 50%);
         }
 
-        .hero-content { 
-            flex: 1; padding-right: 50px; 
-            position: relative; z-index: 2;
-        }
+        .hero-content { flex: 1; padding-right: 50px; }
 
         .hero h1 {
             font-size: 3rem; font-weight: 300; margin-bottom: 20px; color: var(--primary-color);
@@ -122,7 +104,7 @@
         }
         .btn:hover { background-color: #4a6f72; }
 
-        .hero-image { flex: 1; display: flex; justify-content: center; position: relative; z-index: 2; }
+        .hero-image { flex: 1; display: flex; justify-content: center; }
         .hero-image img { width: 100%; max-width: 500px; height: auto; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
         /* --- Wave Divider --- */
@@ -196,72 +178,6 @@
         .service-icon img { width: 100%; height: 100%; object-fit: cover; }
         .service-card h3 { margin-bottom: 15px; color: var(--primary-color); }
 
-        /* --- Cost & Location Section --- */
-        .cost-location {
-            background-color: var(--white);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .cost-info {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .cost-card {
-            background: var(--secondary-color);
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--primary-color);
-        }
-
-        .cost-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-family: var(--font-elegant);
-            font-size: 1.4rem;
-        }
-
-        .price-tag {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--text-color);
-            margin: 10px 0;
-        }
-
-        .location-info {
-            flex: 1;
-            min-width: 300px;
-            background: var(--secondary-color);
-            padding: 30px;
-            border-radius: 15px;
-        }
-
-        .map-placeholder {
-            width: 100%;
-            height: 250px;
-            background-color: #ddd;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            margin-top: 20px;
-            background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop'); /* Forest map texture */
-            background-size: cover;
-            position: relative;
-        }
-        
-        .map-overlay {
-            background: rgba(255,255,255,0.8);
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-
         /* --- Testimonials --- */
         .testimonials { background-color: var(--white); text-align: center; }
         .testimonial-card {
@@ -307,38 +223,7 @@
         .email-reveal p { margin-bottom: 15px; font-size: 0.9rem; }
 
         /* --- Footer --- */
-        footer { 
-            background-color: #2c3e50; 
-            color: #aaa; 
-            text-align: center; 
-            padding: 20px 0; 
-            font-size: 0.9rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .lumo-credit {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        .lumo-logo-small {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 12px;
-        }
+        footer { background-color: #333; color: #aaa; text-align: center; padding: 20px 0; font-size: 0.9rem; }
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
@@ -349,7 +234,6 @@
             .nav-links { display: none; }
             .contact-options { flex-direction: column; align-items: center; }
             .training-logos { gap: 20px; }
-            .cost-location { flex-direction: column; }
         }
     </style>
 </head>
@@ -367,7 +251,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#standards">Standards</a></li>
                     <li><a href="#approaches">Approaches</a></li>
-                    <li><a href="#cost">Cost & Location</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -383,12 +267,12 @@
                         <span class="revive-word">ReVive</span>
                         Craniosacral Therapy
                     </h1>
-                    <h2>In the Heart of the Forest of Dean</h2>
-                    <p>Restore balance through gentle, mindful touch amidst the tranquility of nature. Specialized care for stress, pain, and trauma.</p>
+                    <h2>With Av Singh</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Restore balance through gentle, mindful touch.</p>
                     <a href="#contact" class="btn">Book a Session</a>
                 </div>
                 <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2070&auto=format&fit=crop" alt="Peaceful sunset in Forest of Dean">
+                    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2070&auto=format&fit=crop" alt="Peaceful sunset">
                 </div>
             </div>
         </div>
@@ -400,11 +284,11 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About the Practice</h2>
+            <h2 class="section-title">About Av Singh</h2>
             <p>
-                Nestled in the serene landscape of the Forest of Dean, my practice offers a sanctuary for healing. 
-                With years of dedicated training and a deep connection to the natural rhythms of the forest, 
-                I am committed to helping clients find relief and restore their natural balance through the gentle art of craniosacral therapy.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. 
+                Cras venenatis euismod malesuada. With years of dedicated practice and training, I am committed to helping 
+                clients find relief and restore their natural balance through the gentle art of craniosacral therapy.
             </p>
         </div>
     </section>
@@ -418,10 +302,12 @@
             </p>
             <div class="training-logos">
                 <div class="training-logo-item">
+                    <!-- Replace with your local image: images/Cranio-Logo.png -->
                     <img src="images/Cranio-Logo.png" alt="Cranio Logo Certification">
-                    <p>Certified in Craniosacral Techniques</p>
+                    <p>Certified by Craniosacral Therapy Education Trust London</p>
                 </div>
                 <div class="training-logo-item">
+                    <!-- Replace with your local image: images/BCTI-logo.png -->
                     <img src="images/BCTI-logo.png" alt="BCTI Logo Certification">
                     <p>BCTI Certified Practitioner</p>
                 </div>
@@ -439,61 +325,22 @@
                         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop" alt="Standard Craniosacral">
                     </div>
                     <h3>Standard Craniosacral</h3>
-                    <p>Gentle manipulation to release tension and restore rhythm.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gentle manipulation to release tension and restore rhythm.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?q=80&w=2000&auto=format&fit=crop" alt="Pediatric Care">
                     </div>
                     <h3>Pediatric Care</h3>
-                    <p>Specially adapted techniques for infants and children.</p>
+                    <p>Ut enim ad minim veniam, specially adapted techniques for infants and children experiencing birth trauma or developmental challenges.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://images.unsplash.com/photo-1515023115689-589c33041697?q=80&w=2070&auto=format&fit=crop" alt="Trauma Release">
                     </div>
                     <h3>Trauma Release</h3>
-                    <p>Supporting the body's natural ability to release stored traumatic energy.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate. Supporting the body's natural ability to release stored traumatic energy.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cost & Location Section -->
-    <section id="cost" class="cost-location">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Cost & Location</h2>
-            
-            <div class="cost-info">
-                <div class="cost-card">
-                    <h3>Initial Consultation</h3>
-                    <div class="price-tag">£65</div>
-                    <p>90 minutes. Includes detailed history, assessment, and first treatment.</p>
-                </div>
-                <div class="cost-card">
-                    <h3>Follow-up Sessions</h3>
-                    <div class="price-tag">£50</div>
-                    <p>60 minutes. Focused treatment to continue the healing process.</p>
-                </div>
-                <div class="cost-card">
-                    <h3>Family/Pediatric</h3>
-                    <div class="price-tag">£45</div>
-                    <p>45 minutes. Gentle, age-appropriate care for children.</p>
-                </div>
-            </div>
-
-            <div class="location-info">
-                <h3 style="color: var(--primary-color); margin-bottom: 15px; font-family: var(--font-elegant); font-size: 1.4rem;">Find Us</h3>
-                <p><strong>ReVive Clinic</strong><br>
-                Forest of Dean, Gloucestershire<br>
-                Near the heart of the ancient woodland.</p>
-                
-                <div class="map-placeholder">
-                    <div class="map-overlay">Map View: Forest of Dean</div>
-                </div>
-                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--light-text);">
-                    *Exact address provided upon booking confirmation.
-                </p>
             </div>
         </div>
     </section>
@@ -503,11 +350,11 @@
         <div class="container">
             <h2 class="section-title">Client Experiences</h2>
             <div class="testimonial-card">
-                <p>"The sessions have been transformative for my chronic pain. The peaceful setting in the Forest of Dean adds to the healing experience."</p>
-                <div class="testimonial-author">— Local Client</div>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. The sessions with Av have been transformative for my chronic pain."</p>
+                <div class="testimonial-author">— Client Name</div>
             </div>
             <div class="testimonial-card">
-                <p>"I felt deeply relaxed and heard. Highly recommend ReVive Craniosacral Therapy."</p>
+                <p>"Ut enim ad minim veniam, I felt deeply relaxed and heard. Highly recommend ReVive Craniosacral Therapy."</p>
                 <div class="testimonial-author">— Another Client</div>
             </div>
         </div>
@@ -534,19 +381,14 @@
                             <input type="tel" name="phone" placeholder="Phone Number (Optional)">
                         </div>
                         <div class="form-group">
-                            <select name="timeslot" required>
-                                <option value="" disabled selected>Preferred Timeslot (PM)</option>
-                                <option value="Mon 1pm">Monday 1:00 PM</option>
-                                <option value="Mon 2pm">Monday 2:00 PM</option>
-                                <option value="Mon 3pm">Monday 3:00 PM</option>
-                                <option value="Tue 1pm">Tuesday 1:00 PM</option>
-                                <option value="Tue 2pm">Tuesday 2:00 PM</option>
-                                <option value="Wed 1pm">Wednesday 1:00 PM</option>
-                                <option value="Wed 2pm">Wednesday 2:00 PM</option>
-                                <option value="Thu 1pm">Thursday 1:00 PM</option>
-                                <option value="Thu 2pm">Thursday 2:00 PM</option>
-                                <option value="Fri 1pm">Friday 1:00 PM</option>
-                                <option value="Fri 2pm">Friday 2:00 PM</option>
+                            <select name="date" required>
+                                <option value="" disabled selected>Preferred Day</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Weekend">Weekend</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -571,11 +413,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 ReVive Craniosacral Therapy | Forest of Dean. All rights reserved.</p>
-            <div class="lumo-credit">
-                <div class="lumo-logo-small">L</div>
-                <span>Part-generated by Lumo AI</span>
-            </div>
+            <p>&copy; 2026 ReVive Craniosacral Therapy | Av Singh. All rights reserved.</p>
         </div>
     </footer>
 
@@ -608,11 +446,9 @@
             btn.textContent = 'Sending...';
             statusMsg.style.display = 'none';
 
-            // --- EMAILJS CONFIGURATION ---
             // REPLACE THESE WITH YOUR ACTUAL EMAILJS IDS
-            const serviceID = 'YOUR_SERVICE_ID';
-            const templateID = 'YOUR_TEMPLATE_ID';
-            // -----------------------------
+            const serviceID = 'service_zvaycjp';
+            const templateID = 'template_4x4x0td';
 
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
