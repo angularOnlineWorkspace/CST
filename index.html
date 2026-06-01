@@ -3,22 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReVive Craniosacral Therapy | Av Singh</title>
+    <title>ReVive Craniosacral Therapy | Forest of Dean</title>
     
     <!-- Favicon: Hands holding light/gentle touch -->
     <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?q=80&w=32&auto=format&fit=crop">
     
-    <!-- Google Fonts for Health Club Style -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // REPLACE 'YOUR_PUBLIC_KEY' WITH YOUR ACTUAL EMAILJS PUBLIC KEY
+            emailjs.init("jxWVHLDPtZYPoB3zn");
+        })();
+    </script>
+    
     <style>
-        /* --- CSS Variables for Easy Color Changes --- */
+        /* --- CSS Variables --- */
         :root {
-            --primary-color: #5D8A8E; /* Calming Teal */
-            --secondary-color: #F4F1EA; /* Warm Off-White Background */
-            --accent-color: #A8C5C7; /* Lighter Teal Accent */
+            --primary-color: #5D8A8E;
+            --secondary-color: #F4F1EA;
+            --accent-color: #A8C5C7;
             --text-color: #333333;
             --light-text: #666666;
             --white: #ffffff;
@@ -26,12 +35,7 @@
             --font-elegant: 'Cormorant Garamond', serif;
         }
 
-        /* --- Global Reset & Typography --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-main);
@@ -40,363 +44,196 @@
             line-height: 1.6;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.3s ease;
-        }
+        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+        ul { list-style: none; }
 
-        ul {
-            list-style: none;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
 
-        /* --- Layout Containers --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        /* --- Header & Navigation --- */
+        /* --- Header --- */
         header {
             background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            position: sticky; top: 0; z-index: 1000;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 70px; }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: var(--primary-color);
-            letter-spacing: 1px;
+            font-size: 1.5rem; font-weight: 500; color: var(--primary-color); letter-spacing: 1px;
+            display: flex; align-items: center; gap: 10px;
         }
 
-        .logo-ReVive {
+        .logo-revive {
             font-family: var(--font-elegant);
             font-weight: 600;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--primary-color);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a:hover { color: var(--primary-color); }
 
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* --- Hero Section --- */
+        /* --- Hero --- */
         .hero {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             min-height: 80vh;
             background: linear-gradient(to right, var(--secondary-color) 50%, var(--white) 50%);
         }
 
-        .hero-content {
-            flex: 1;
-            padding-right: 50px;
-        }
+        .hero-content { flex: 1; padding-right: 50px; }
 
         .hero h1 {
-            font-size: 3rem;
-            font-weight: 300;
-            margin-bottom: 20px;
-            color: var(--primary-color);
+            font-size: 3rem; font-weight: 300; margin-bottom: 20px; color: var(--primary-color);
         }
 
-        .hero h1 .ReVive {
+        .hero h1 .revive-word {
             font-family: var(--font-elegant);
             font-weight: 600;
             font-size: 3.5rem;
             display: block;
         }
 
-        .hero h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 30px;
-            color: var(--light-text);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--light-text);
-            margin-bottom: 30px;
-            max-width: 500px;
-        }
+        .hero h2 { font-size: 1.5rem; font-weight: 400; margin-bottom: 30px; color: var(--light-text); }
+        .hero p { font-size: 1.2rem; color: var(--light-text); margin-bottom: 30px; max-width: 500px; }
 
         .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 500;
-            transition: background 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
+            display: inline-block; background-color: var(--primary-color); color: var(--white);
+            padding: 12px 30px; border-radius: 30px; font-weight: 500;
+            transition: background 0.3s ease; cursor: pointer; border: none; font-size: 1rem;
         }
+        .btn:hover { background-color: #4a6f72; }
 
-        .btn:hover {
-            background-color: #4a6f72;
-        }
+        .hero-image { flex: 1; display: flex; justify-content: center; }
+        .hero-image img { width: 100%; max-width: 500px; height: auto; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero-image img {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        /* --- Decorative Wave Divider --- */
+        /* --- Wave Divider --- */
         .wave-divider {
-            width: 100%;
-            height: 100px;
+            width: 100%; height: 100px;
             background-image: url('https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+            background-size: cover; background-position: center;
             opacity: 0.1;
             mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
         }
 
-        /* --- About Section --- */
-        .about {
-            background-color: var(--white);
-            text-align: center;
-            position: relative;
-        }
+        /* --- About --- */
+        .about { background-color: var(--white); text-align: center; }
+        .section-title { font-size: 2rem; margin-bottom: 20px; color: var(--primary-color); font-weight: 400; }
+        .about p { max-width: 700px; margin: 0 auto; color: var(--light-text); }
 
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            font-weight: 400;
-        }
-
-        .about p {
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--light-text);
-        }
-
-        /* --- Services Section --- */
-        .services {
+        /* --- Training Standards Section --- */
+        .training-section {
             background-color: var(--secondary-color);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             text-align: center;
-            transition: transform 0.3s ease;
+            padding: 60px 0;
         }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-
-        .service-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .service-card h3 {
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        /* --- Testimonial Section --- */
-        .testimonials {
-            background-color: var(--white);
-            text-align: center;
-        }
-
-        .testimonial-card {
-            background: var(--secondary-color);
-            padding: 40px;
-            border-radius: 10px;
-            margin: 20px auto;
-            max-width: 700px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            margin-top: 20px;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        /* --- Contact Section --- */
-        .contact {
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .contact h2 {
-            color: var(--white);
-        }
-
-        .contact p {
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 30px;
-        }
-
-        .contact-options {
+        
+        .training-logos {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 50px;
+            margin-top: 30px;
             flex-wrap: wrap;
-            margin-top: 40px;
+        }
+
+        .training-logo-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 200px;
+            text-align: center;
+        }
+
+        .training-logo-item img {
+            max-width: 100%;
+            height: auto;
+            max-height: 120px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .training-logo-item p {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        /* --- Services --- */
+        .services { background-color: var(--secondary-color); }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; margin-top: 40px;
+        }
+        .service-card {
+            background: var(--white); padding: 40px; border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-icon {
+            width: 80px; height: 80px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden;
+        }
+        .service-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .service-card h3 { margin-bottom: 15px; color: var(--primary-color); }
+
+        /* --- Testimonials --- */
+        .testimonials { background-color: var(--white); text-align: center; }
+        .testimonial-card {
+            background: var(--secondary-color); padding: 40px; border-radius: 10px;
+            margin: 20px auto; max-width: 700px; font-style: italic;
+        }
+        .testimonial-author { margin-top: 20px; font-weight: 600; color: var(--primary-color); }
+
+        /* --- Contact --- */
+        .contact { background-color: var(--primary-color); color: var(--white); text-align: center; }
+        .contact h2 { color: var(--white); }
+        .contact p { color: rgba(255,255,255,0.9); margin-bottom: 30px; }
+
+        .contact-options {
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 40px;
         }
 
         .contact-method {
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 15px;
-            flex: 1;
-            min-width: 300px;
-            max-width: 450px;
-            text-align: left;
+            background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;
+            flex: 1; min-width: 300px; max-width: 450px; text-align: left;
         }
 
         .contact-method h3 {
-            color: var(--white);
-            margin-bottom: 15px;
-            font-family: var(--font-elegant);
-            font-size: 1.5rem;
+            color: var(--white); margin-bottom: 15px; font-family: var(--font-elegant); font-size: 1.5rem;
         }
 
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .contact-form { display: flex; flex-direction: column; gap: 15px; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 12px; border: none; border-radius: 8px;
+            font-family: var(--font-main); font-size: 0.95rem;
         }
-
-        .form-group input, 
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-family: var(--font-main);
-            font-size: 0.95rem;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
+        .form-group textarea { resize: vertical; min-height: 100px; }
 
         .submit-btn {
-            background-color: var(--white);
-            color: var(--primary-color);
-            padding: 12px;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            font-size: 1rem;
+            background-color: var(--white); color: var(--primary-color);
+            padding: 12px; border: none; border-radius: 30px; font-weight: 600;
+            cursor: pointer; transition: background 0.3s ease; font-size: 1rem;
         }
+        .submit-btn:hover { background-color: #f0f0f0; }
+        .submit-btn:disabled { background-color: #ccc; cursor: not-allowed; }
 
-        .submit-btn:hover {
-            background-color: #f0f0f0;
-        }
-
-        .email-reveal {
-            text-align: center;
-        }
-
-        .email-reveal p {
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
+        .email-reveal { text-align: center; }
+        .email-reveal p { margin-bottom: 15px; font-size: 0.9rem; }
 
         /* --- Footer --- */
-        footer {
-            background-color: #333;
-            color: #aaa;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 0.9rem;
-        }
+        footer { background-color: #333; color: #aaa; text-align: center; padding: 20px 0; font-size: 0.9rem; }
 
-        /* --- Responsive Design --- */
+        /* --- Responsive --- */
         @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                background: var(--secondary-color);
-                text-align: center;
-                padding-top: 40px;
-            }
-
-            .hero-content {
-                padding-right: 0;
-                margin-bottom: 40px;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero h1 .ReVive {
-                font-size: 2.8rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .contact-options {
-                flex-direction: column;
-                align-items: center;
-            }
+            .hero { flex-direction: column; background: var(--secondary-color); text-align: center; padding-top: 40px; }
+            .hero-content { padding-right: 0; margin-bottom: 40px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero h1 .revive-word { font-size: 2.8rem; }
+            .nav-links { display: none; }
+            .contact-options { flex-direction: column; align-items: center; }
+            .training-logos { gap: 20px; }
         }
     </style>
 </head>
@@ -407,11 +244,12 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <span class="logo-ReVive">ReVive</span> Craniosacral Therapy
+                    <span class="logo-revive">ReVive</span> Craniosacral Therapy
                 </div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#standards">Standards</a></li>
                     <li><a href="#approaches">Approaches</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -426,7 +264,7 @@
             <div style="display: flex; flex-wrap: wrap; align-items: center;">
                 <div class="hero-content">
                     <h1>
-                        <span class="ReVive">ReVive</span>
+                        <span class="revive-word">ReVive</span>
                         Craniosacral Therapy
                     </h1>
                     <h2>With Av Singh</h2>
@@ -434,7 +272,6 @@
                     <a href="#contact" class="btn">Book a Session</a>
                 </div>
                 <div class="hero-image">
-                    <!-- Sunset Image -->
                     <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2070&auto=format&fit=crop" alt="Peaceful sunset">
                 </div>
             </div>
@@ -453,6 +290,28 @@
                 Cras venenatis euismod malesuada. With years of dedicated practice and training, I am committed to helping 
                 clients find relief and restore their natural balance through the gentle art of craniosacral therapy.
             </p>
+        </div>
+    </section>
+
+    <!-- Training Standards Section -->
+    <section id="standards" class="training-section">
+        <div class="container">
+            <h2 class="section-title">Certified Training Standards</h2>
+            <p style="color: var(--light-text); max-width: 600px; margin: 0 auto;">
+                My practice adheres to the highest standards of education and certification in the field.
+            </p>
+            <div class="training-logos">
+                <div class="training-logo-item">
+                    <!-- Replace with your local image: images/Cranio-Logo.png -->
+                    <img src="images/Cranio-Logo.png" alt="Cranio Logo Certification">
+                    <p>Certified by Craniosacral Therapy Education Trust London</p>
+                </div>
+                <div class="training-logo-item">
+                    <!-- Replace with your local image: images/BCTI-logo.png -->
+                    <img src="images/BCTI-logo.png" alt="BCTI Logo Certification">
+                    <p>BCTI Certified Practitioner</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -508,10 +367,10 @@
             <p>Ready to find relief? Choose the method that works best for you.</p>
             
             <div class="contact-options">
-                <!-- Option 1: Booking Form -->
+                <!-- Option 1: Booking Form with EmailJS -->
                 <div class="contact-method">
                     <h3>Request Appointment</h3>
-                    <form class="contact-form" action="#" method="post">
+                    <form id="booking-form" class="contact-form">
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Your Name" required>
                         </div>
@@ -522,20 +381,21 @@
                             <input type="tel" name="phone" placeholder="Phone Number (Optional)">
                         </div>
                         <div class="form-group">
-                            <select name="date">
-                                <option value="" disabled selected>Preferred Date</option>
-                                <option value="monday">Monday</option>
-                                <option value="tuesday">Tuesday</option>
-                                <option value="wednesday">Wednesday</option>
-                                <option value="thursday">Thursday</option>
-                                <option value="friday">Friday</option>
-                                <option value="weekend">Weekend</option>
+                            <select name="date" required>
+                                <option value="" disabled selected>Preferred Day</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Weekend">Weekend</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" placeholder="Briefly describe your needs or questions..."></textarea>
+                            <textarea name="message" placeholder="Briefly describe your needs or questions..." required></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Send Request</button>
+                        <button type="submit" id="submit-btn" class="submit-btn">Send Request</button>
+                        <p id="form-status" style="margin-top: 10px; font-size: 0.9rem; display: none;"></p>
                     </form>
                 </div>
 
@@ -559,14 +419,14 @@
 
     <!-- Scripts -->
     <script>
+        // 1. Email Reveal Function
         function revealEmail() {
-            const emailParts = ['av', 'ReVivecraniosacral', 'com'];
+            const emailParts = ['av', 'revivingcraniosacral', 'com'];
             const email = emailParts[0] + '@' + emailParts[1] + '.' + emailParts[2];
             const emailDisplay = document.getElementById('email-display');
             emailDisplay.textContent = email;
             emailDisplay.style.display = 'block';
             
-            // Copy to clipboard
             navigator.clipboard.writeText(email).then(() => {
                 setTimeout(() => {
                     alert('Email copied to clipboard!');
@@ -574,63 +434,45 @@
             });
         }
 
-        // Simple form submission handler (for demo purposes)
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your request, Av Singh will review it and contact you shortly.');
-            this.reset();
+        // 2. EmailJS Form Submission
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const btn = document.getElementById('submit-btn');
+            const statusMsg = document.getElementById('form-status');
+            
+            // Disable button and change text
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            statusMsg.style.display = 'none';
+
+            // REPLACE THESE WITH YOUR ACTUAL EMAILJS IDS
+            const serviceID = 'service_zvaycjp';
+            const templateID = 'template_4x4x0td';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    btn.textContent = 'Sent!';
+                    statusMsg.textContent = 'Thank you! Your request has been sent successfully.';
+                    statusMsg.style.color = '#fff';
+                    statusMsg.style.display = 'block';
+                    this.reset();
+                    
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.textContent = 'Send Request';
+                        statusMsg.style.display = 'none';
+                    }, 5000);
+                }, (err) => {
+                    btn.disabled = false;
+                    btn.textContent = 'Send Request';
+                    statusMsg.textContent = 'Failed to send. Please try again or email directly.';
+                    statusMsg.style.color = '#ffcccc';
+                    statusMsg.style.display = 'block';
+                    console.log(JSON.stringify(err));
+                });
         });
     </script>
 
-
-<h2>Contact Form</h2>
-  
-  <form id="contact-form">
-    <input type="text" id="name" placeholder="Your Name" required />
-    <input type="email" id="email" placeholder="Your Email" required />
-    <textarea id="message" rows="6" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-
-  <p id="status"></p>
-
-  <!-- EmailJS SDK -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-  <script>
-    // Initialize EmailJS with your Public Key
-    emailjs.init({
-      publicKey: "jxWVHLDPtZYPoB3zn",   // ← Replace this
-    });
-
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('status');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-//phone
-
-      const templateParams = {
-        from_name: document.getElementById('name').value,
-        from_email: document.getElementById('email').value,
-        message: document.getElementById('message').value,
-		
-      };
-
-      status.textContent = "Sending...";
-
-      emailjs.send('service_zvaycjp', 'template_4x4x0td', templateParams)  // ← Replace both
-        .then(() => {
-          status.textContent = "✅ Message sent successfully!";
-          form.reset();
-        })
-        .catch((error) => {
-          console.error(error);
-          status.textContent = "❌ Failed to send. Please try again.";
-        });
-    });
-  </script>
-  
 </body>
 </html>
