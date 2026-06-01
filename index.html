@@ -600,7 +600,7 @@
   <script>
     // Initialize EmailJS with your Public Key
     emailjs.init({
-      publicKey: "YOUR_PUBLIC_KEY_HERE",   // ← Replace this
+      publicKey: "jxWVHLDPtZYPoB3zn",   // ← Replace this
     });
 
     const form = document.getElementById('contact-form');
@@ -620,7 +620,7 @@
 
       status.textContent = "Sending...";
 
-      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)  // ← Replace both
+      emailjs.send('service_zvaycjp', 'template_4x4x0td', templateParams)  // ← Replace both
         .then(() => {
           status.textContent = "✅ Message sent successfully!";
           form.reset();
