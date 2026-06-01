@@ -24,7 +24,7 @@
     <style>
         /* --- CSS Variables --- */
         :root {
-            --primary-color: #5D8A8E; /* Calming Teal */
+            --primary-color: #5D8A8E;
             --forest-green: #3A5A40;
             --secondary-color: #F4F1EA;
             --text-color: #333333;
@@ -36,167 +36,38 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: var(--font-main);
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
+        body { font-family: var(--font-main); background-color: var(--secondary-color); color: var(--text-color); line-height: 1.6; }
         a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
-        a.credits-link { color: var(--light-text); text-decoration: underline; font-size: 0.8rem; }
-        a.credits-link:hover { color: var(--primary-color); }
-
         ul { list-style: none; }
-
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         section { padding: 50px 0; }
 
         /* --- Header --- */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000;
-        }
-
+        header { background-color: var(--white); box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         nav { display: flex; justify-content: space-between; align-items: center; height: 60px; }
-
-        .logo {
-            font-size: 1.4rem; font-weight: 500; color: var(--primary-color); letter-spacing: 1px;
-            display: flex; align-items: center; gap: 10px;
-        }
-
-        .logo-revive {
-            font-family: var(--font-elegant);
-            font-weight: 600;
-            font-size: 1.8rem;
-            color: var(--primary-color);
-        }
-
+        .logo { font-size: 1.4rem; font-weight: 500; color: var(--primary-color); letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
+        .logo-revive { font-family: var(--font-elegant); font-weight: 600; font-size: 1.8rem; color: var(--primary-color); }
         .nav-links { display: flex; gap: 25px; }
         .nav-links a { font-size: 0.9rem; font-weight: 500; }
         .nav-links a:hover { color: var(--primary-color); }
 
-        /* --- Training Notice Banner --- */
-        .training-notice {
-            background-color: #eef5f5;
-            color: var(--primary-color);
-            text-align: center;
-            padding: 12px 0;
-            font-size: 0.9rem;
-            border-bottom: 1px solid rgba(93, 138, 142, 0.2);
-        }
-        .training-notice strong {
-            font-weight: 600;
-            color: var(--forest-green);
-        }
+        /* --- Training Notice --- */
+        .training-notice { background-color: #eef5f5; color: var(--primary-color); text-align: center; padding: 12px 0; font-size: 0.9rem; border-bottom: 1px solid rgba(93, 138, 142, 0.2); }
+        .training-notice strong { font-weight: 600; color: var(--forest-green); }
 
-        /* --- Hero Section (Gradient Overlay Method) --- */
-        .hero {
-            position: relative;
-            min-height: 75vh;
-            display: flex;
-            align-items: center;
-            /* Updated Image Name */
-            background-image: url('images/hero-sunset2.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 0;
-        }
-
-        /* 
-           THE GRADIENT OVERLAY 
-           This creates a dark fade from left to right, and bottom to top.
-           This replaces the white box entirely.
-        */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            /* Linear Gradient: Dark on left (where text is), fading to transparent on right/top */
-            background: linear-gradient(
-                90deg, 
-                rgba(20, 30, 25, 0.85) 0%,   /* Dark left side */
-                rgba(20, 30, 25, 0.6) 40%,   /* Mid fade */
-                rgba(20, 30, 25, 0.1) 70%,   /* Almost transparent right */
-                rgba(20, 30, 25, 0) 100%     /* Transparent far right */
-            );
-            z-index: 1;
-        }
-
-        .hero-content {
-            /* Position text on the left where the gradient is darkest */
-            margin-left: 8%; 
-            max-width: 600px;
-            width: 100%;
-            position: relative;
-            z-index: 2; /* Above the gradient */
-            padding: 20px 0; /* No box padding needed */
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 300;
-            margin-bottom: 5px;
-            color: var(--white); /* White text for contrast against dark gradient */
-            line-height: 1.1;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Soft shadow for depth */
-        }
-
-        .hero h1 .revive-word {
-            font-family: var(--font-elegant);
-            font-weight: 600;
-            font-size: 4.2rem;
-            display: block;
-            color: #fff; /* Ensure white */
-        }
-
-        .hero h2 {
-            font-size: 1.4rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-            color: #e0f2f1; /* Very light teal/white */
-            font-style: italic;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #f0f0f0; /* Light grey/white */
-            margin-bottom: 30px;
-            line-height: 1.6;
-            max-width: 550px;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: background 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
+        /* --- Hero --- */
+        .hero { position: relative; min-height: 75vh; display: flex; align-items: center; background-image: url('images/hero-sunset2.jpg'); background-size: cover; background-position: center; padding: 0; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, rgba(20, 30, 25, 0.85) 0%, rgba(20, 30, 25, 0.6) 40%, rgba(20, 30, 25, 0.1) 70%, rgba(20, 30, 25, 0) 100%); z-index: 1; }
+        .hero-content { margin-left: 8%; max-width: 600px; width: 100%; position: relative; z-index: 2; padding: 20px 0; }
+        .hero h1 { font-size: 3.5rem; font-weight: 300; margin-bottom: 5px; color: var(--white); line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .hero h1 .revive-word { font-family: var(--font-elegant); font-weight: 600; font-size: 4.2rem; display: block; color: #fff; }
+        .hero h2 { font-size: 1.4rem; font-weight: 400; margin-bottom: 20px; color: #e0f2f1; font-style: italic; text-shadow: 0 1px 5px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.1rem; color: #f0f0f0; margin-bottom: 30px; line-height: 1.6; max-width: 550px; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+        .btn { display: inline-block; background-color: var(--primary-color); color: var(--white); padding: 12px 30px; border-radius: 25px; font-weight: 600; transition: background 0.3s ease; cursor: pointer; border: none; font-size: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .btn:hover { background-color: #4a6f72; transform: translateY(-2px); }
 
         /* --- Wave Divider --- */
-        .wave-divider {
-            width: 100%;
-            height: 80px;
-            background-image: url('images/wave-divider.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-            margin-top: -20px;
-        }
+        .wave-divider { width: 100%; height: 80px; background-image: url('images/wave-divider.jpg'); background-size: cover; background-position: center; opacity: 0.15; mask-image: linear-gradient(to bottom, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%); margin-top: -20px; }
 
         /* --- About --- */
         .about { background-color: var(--white); text-align: center; }
@@ -204,281 +75,68 @@
         .about p { max-width: 700px; margin: 0 auto; color: var(--light-text); font-size: 0.95rem; }
 
         /* --- Training Standards --- */
-        .training-section {
-            background-color: var(--secondary-color);
-            text-align: center;
-            padding: 40px 0;
-        }
-        
-        .training-logos {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .training-logo-item {
-            background: var(--white);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            width: 180px;
-            text-align: center;
-        }
-
-        .training-logo-item img {
-            max-width: 100%;
-            height: auto;
-            max-height: 100px;
-            object-fit: contain;
-            margin-bottom: 8px;
-        }
-
-        .training-logo-item p {
-            font-size: 0.85rem;
-            color: var(--light-text);
-            font-weight: 500;
-        }
+        .training-section { background-color: var(--secondary-color); text-align: center; padding: 40px 0; }
+        .training-logos { display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap; }
+        .training-logo-item { background: var(--white); padding: 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); width: 180px; text-align: center; }
+        .training-logo-item img { max-width: 100%; height: auto; max-height: 100px; object-fit: contain; margin-bottom: 8px; }
+        .training-logo-item p { font-size: 0.85rem; color: var(--light-text); font-weight: 500; }
 
         /* --- Services --- */
         .services { background-color: var(--secondary-color); }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        .service-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .service-card { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s ease; }
         .service-card:hover { transform: translateY(-3px); }
-        
-        .service-icon {
-            width: 100px; 
-            height: 100px; 
-            margin: 0 auto 20px; 
-            border-radius: 50%; 
-            overflow: hidden;
-            box-shadow: 0 6px 15px rgba(93, 138, 142, 0.2);
-            border: 3px solid var(--secondary-color);
-        }
+        .service-icon { width: 100px; height: 100px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; box-shadow: 0 6px 15px rgba(93, 138, 142, 0.2); border: 3px solid var(--secondary-color); }
         .service-icon img { width: 100%; height: 100%; object-fit: cover; }
         .service-card h3 { margin-bottom: 12px; color: var(--primary-color); font-size: 1.2rem; }
         .service-card p { font-size: 0.9rem; }
 
         /* --- Cost & Location --- */
-        .cost-location {
-            background-color: var(--white);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            align-items: center;
-        }
-
+        .cost-location { background-color: var(--white); display: flex; flex-wrap: wrap; gap: 30px; align-items: center; }
         .cost-info { flex: 1; min-width: 300px; }
-
-        .cost-card {
-            background: var(--secondary-color);
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary-color);
-            position: relative;
-        }
-
-        .cost-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 8px;
-            font-family: var(--font-elegant);
-            font-size: 1.3rem;
-        }
-
-        .offer-badge {
-            display: inline-block;
-            background-color: var(--offer-color);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .price-container {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            margin: 10px 0;
-        }
-
-        .old-price {
-            font-size: 1.1rem;
-            color: #999;
-            text-decoration: line-through;
-        }
-
-        .new-price {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--offer-color);
-        }
-
+        .cost-card { background: var(--secondary-color); padding: 25px; border-radius: 10px; border-left: 4px solid var(--primary-color); position: relative; }
+        .cost-card h3 { color: var(--primary-color); margin-bottom: 8px; font-family: var(--font-elegant); font-size: 1.3rem; }
+        .offer-badge { display: inline-block; background-color: var(--offer-color); color: white; padding: 3px 10px; border-radius: 15px; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; }
+        .price-container { display: flex; align-items: baseline; gap: 12px; margin: 10px 0; }
+        .old-price { font-size: 1.1rem; color: #999; text-decoration: line-through; }
+        .new-price { font-size: 2rem; font-weight: 700; color: var(--offer-color); }
         .cost-card p { font-size: 0.9rem; color: var(--light-text); }
-
-        .location-info {
-            flex: 1;
-            min-width: 300px;
-            background: var(--secondary-color);
-            padding: 25px;
-            border-radius: 10px;
-        }
-
-        .location-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-family: var(--font-elegant);
-            font-size: 1.3rem;
-        }
-
-        .map-placeholder {
-            width: 100%;
-            height: 200px;
-            background-color: #ddd;
-            border-radius: 8px;
-            margin-top: 15px;
-            background-image: url('images/map-forest.jpg');
-            background-size: cover;
-            position: relative;
-        }
-        
-        .map-overlay {
-            background: rgba(255,255,255,0.85);
-            padding: 8px 15px;
-            border-radius: 15px;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
+        .location-info { flex: 1; min-width: 300px; background: var(--secondary-color); padding: 25px; border-radius: 10px; }
+        .location-info h3 { color: var(--primary-color); margin-bottom: 10px; font-family: var(--font-elegant); font-size: 1.3rem; }
+        .map-placeholder { width: 100%; height: 200px; background-color: #ddd; border-radius: 8px; margin-top: 15px; background-image: url('images/map-forest.jpg'); background-size: cover; position: relative; }
+        .map-overlay { background: rgba(255,255,255,0.85); padding: 8px 15px; border-radius: 15px; font-weight: 600; font-size: 0.85rem; }
 
         /* --- Testimonials --- */
         .testimonials { background-color: var(--white); text-align: center; }
-        .testimonial-card {
-            background: var(--secondary-color);
-            padding: 30px;
-            border-radius: 8px;
-            margin: 15px auto;
-            max-width: 650px;
-            font-style: italic;
-        }
+        .testimonial-card { background: var(--secondary-color); padding: 30px; border-radius: 8px; margin: 15px auto; max-width: 650px; font-style: italic; }
         .testimonial-author { margin-top: 15px; font-weight: 600; color: var(--primary-color); font-size: 0.9rem; }
 
         /* --- Contact --- */
         .contact { background-color: var(--primary-color); color: var(--white); text-align: center; }
         .contact h2 { color: var(--white); font-size: 1.8rem; margin-bottom: 10px; }
         .contact p { color: rgba(255,255,255,0.9); margin-bottom: 25px; }
-
-        .contact-options {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .contact-method {
-            background: rgba(255,255,255,0.1);
-            padding: 25px;
-            border-radius: 10px;
-            flex: 1;
-            min-width: 280px;
-            max-width: 420px;
-            text-align: left;
-        }
-
-        .contact-method h3 {
-            color: var(--white);
-            margin-bottom: 12px;
-            font-family: var(--font-elegant);
-            font-size: 1.4rem;
-        }
-
+        .contact-options { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 30px; }
+        .contact-method { background: rgba(255,255,255,0.1); padding: 25px; border-radius: 10px; flex: 1; min-width: 280px; max-width: 420px; text-align: left; }
+        .contact-method h3 { color: var(--white); margin-bottom: 12px; font-family: var(--font-elegant); font-size: 1.4rem; }
         .contact-form { display: flex; flex-direction: column; gap: 12px; }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            font-family: var(--font-main);
-            font-size: 0.9rem;
-        }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px; border: none; border-radius: 6px; font-family: var(--font-main); font-size: 0.9rem; }
         .form-group textarea { resize: vertical; min-height: 80px; }
-
-        .submit-btn {
-            background-color: var(--white);
-            color: var(--primary-color);
-            padding: 10px;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            font-size: 0.9rem;
-        }
+        .submit-btn { background-color: var(--white); color: var(--primary-color); padding: 10px; border: none; border-radius: 25px; font-weight: 600; cursor: pointer; transition: background 0.3s ease; font-size: 0.9rem; }
         .submit-btn:hover { background-color: #f0f0f0; }
         .submit-btn:disabled { background-color: #ccc; cursor: not-allowed; }
-
         .email-reveal { text-align: center; }
         .email-reveal p { margin-bottom: 12px; font-size: 0.85rem; }
 
         /* --- Footer --- */
-        footer { 
-            background-color: #2c3e50; 
-            color: #aaa; 
-            text-align: center; 
-            padding: 15px 0; 
-            font-size: 0.85rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .lumo-credit {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        .lumo-logo-small {
-            height: 18px;
-            width: auto;
-            opacity: 0.7;
-            filter: grayscale(100%) brightness(0.8);
-        }
+        footer { background-color: #2c3e50; color: #aaa; text-align: center; padding: 15px 0; font-size: 0.85rem; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .lumo-credit { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: #888; }
+        .lumo-logo-small { height: 18px; width: auto; opacity: 0.7; filter: grayscale(100%) brightness(0.8); }
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
             .hero { min-height: 60vh; }
-            .hero-content { 
-                margin-left: 0; 
-                margin-right: 0;
-                margin-top: 20px;
-                margin-bottom: 20px;
-                padding: 20px;
-                text-align: center;
-                /* On mobile, we might need a full dark overlay */
-            }
-            .hero::before {
-                /* Full dark overlay on mobile for readability */
-                background: rgba(20, 30, 25, 0.7);
-            }
+            .hero-content { margin-left: 0; margin-right: 0; margin-top: 20px; margin-bottom: 20px; padding: 20px; text-align: center; }
+            .hero::before { background: rgba(20, 30, 25, 0.7); }
             .hero h1 { font-size: 2.2rem; }
             .hero h1 .revive-word { font-size: 2.8rem; }
             .nav-links { display: none; }
@@ -510,7 +168,7 @@
         </div>
     </header>
 
-    <!-- Training Notice Banner -->
+    <!-- Training Notice -->
     <div class="training-notice">
         <div class="container">
             <strong>Special Introductory Offer:</strong> Currently completing advanced certification training. Sessions offered at a reduced rate to support clinical practice development.
@@ -520,38 +178,29 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>
-                <span class="revive-word">ReVive</span>
-                Craniosacral Therapy
-            </h1>
-            <h2>In the Heart of the Forest of Dean</h2>
-            <p>Restore balance through gentle, mindful touch amidst the tranquility of nature. Specialized care for stress, pain, and trauma.</p>
+            <h1 data-include="content/all-text.html" data-section="hero-title"></h1>
+            <h2 data-include="content/all-text.html" data-section="hero-subtitle"></h2>
+            <p data-include="content/all-text.html" data-section="hero-desc"></p>
             <a href="#contact" class="btn">Book a Session</a>
         </div>
     </section>
 
-    <!-- Decorative Divider -->
+    <!-- Wave Divider -->
     <div class="wave-divider"></div>
 
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">About the Practice</h2>
-            <p>
-                Nestled in the serene landscape of the Forest of Dean, my practice offers a sanctuary for healing. 
-                With years of dedicated training and a deep connection to the natural rhythms of the forest, 
-                I am committed to helping clients find relief and restore their natural balance through the gentle art of craniosacral therapy.
-            </p>
+            <p data-include="content/all-text.html" data-section="about-text"></p>
         </div>
     </section>
 
-    <!-- Training Standards Section -->
+    <!-- Training Standards -->
     <section id="standards" class="training-section">
         <div class="container">
             <h2 class="section-title">Certified Training Standards</h2>
-            <p style="color: var(--light-text); max-width: 600px; margin: 0 auto; font-size: 0.9rem;">
-                Adhering to the highest standards of education and certification.
-            </p>
+            <p style="color: var(--light-text); max-width: 600px; margin: 0 auto; font-size: 0.9rem;">Adhering to the highest standards of education and certification.</p>
             <div class="training-logos">
                 <div class="training-logo-item">
                     <img src="images/Cranio-Logo.png" alt="Cranio Logo">
@@ -569,41 +218,34 @@
         </div>
     </section>
 
-    <!-- Therapeutic Approaches Section -->
+    <!-- Services -->
     <section id="approaches" class="services">
         <div class="container">
             <h2 class="section-title" style="text-align: center;">Therapeutic Approaches</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <img src="images/service-craniosacral.jpg" alt="Standard">
-                    </div>
-                    <h3>Standard Craniosacral</h3>
-                    <p>Gentle manipulation to release tension and restore rhythm.</p>
+                    <div class="service-icon"><img src="images/service-craniosacral.jpg" alt="Standard"></div>
+                    <h3 data-include="content/all-text.html" data-section="service-1-title"></h3>
+                    <p data-include="content/all-text.html" data-section="service-1-desc"></p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <img src="images/service-pediatric.jpg" alt="Pediatric">
-                    </div>
-                    <h3>Pediatric Care</h3>
-                    <p>Adapted techniques for infants and children.</p>
+                    <div class="service-icon"><img src="images/service-pediatric.jpg" alt="Pediatric"></div>
+                    <h3 data-include="content/all-text.html" data-section="service-2-title"></h3>
+                    <p data-include="content/all-text.html" data-section="service-2-desc"></p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <img src="images/service-trauma.jpg" alt="Trauma">
-                    </div>
-                    <h3>Trauma Release</h3>
-                    <p>Releasing stored traumatic energy naturally.</p>
+                    <div class="service-icon"><img src="images/service-trauma.jpg" alt="Trauma"></div>
+                    <h3 data-include="content/all-text.html" data-section="service-3-title"></h3>
+                    <p data-include="content/all-text.html" data-section="service-3-desc"></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Cost & Location Section -->
+    <!-- Cost & Location -->
     <section id="cost" class="cost-location">
         <div class="container">
             <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">Cost & Location</h2>
-            
             <div class="cost-info">
                 <div class="cost-card">
                     <div class="offer-badge">Introductory Offer</div>
@@ -615,58 +257,42 @@
                     <p>90 minutes. Includes detailed history, assessment, and first treatment. <br><em>Limited availability during training phase.</em></p>
                 </div>
             </div>
-
             <div class="location-info">
                 <h3>Find Us</h3>
-                <p><strong>ReVive Clinic</strong><br>
-                Forest of Dean, Gloucestershire<br>
-                Near the heart of the ancient woodland.</p>
-                
-                <div class="map-placeholder">
-                    <div class="map-overlay">Map View: Forest of Dean</div>
-                </div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: var(--light-text);">
-                    *Exact address provided upon booking.
-                </p>
+                <p><strong>ReVive Clinic</strong><br>Forest of Dean, Gloucestershire<br>Near the heart of the ancient woodland.</p>
+                <div class="map-placeholder"><div class="map-overlay">Map View: Forest of Dean</div></div>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: var(--light-text);">*Exact address provided upon booking.</p>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials -->
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2 class="section-title">Client Experiences</h2>
             <div class="testimonial-card">
-                <p>"The sessions have been transformative for my chronic pain. The peaceful setting in the Forest of Dean adds to the healing experience."</p>
+                <p data-include="content/all-text.html" data-section="testimonial-1"></p>
                 <div class="testimonial-author">— Local Client</div>
             </div>
             <div class="testimonial-card">
-                <p>"I felt deeply relaxed and heard. Highly recommend ReVive Craniosacral Therapy."</p>
+                <p data-include="content/all-text.html" data-section="testimonial-2"></p>
                 <div class="testimonial-author">— Another Client</div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Begin Your Journey</h2>
-            <p>Ready to find relief? Choose the method that works best for you.</p>
-            
+            <h2 data-include="content/all-text.html" data-section="contact-heading"></h2>
+            <p data-include="content/all-text.html" data-section="contact-sub"></p>
             <div class="contact-options">
-                <!-- Option 1: Booking Form -->
                 <div class="contact-method">
                     <h3>Request Appointment</h3>
                     <form id="booking-form" class="contact-form">
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" name="phone" placeholder="Phone (Optional)">
-                        </div>
+                        <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+                        <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
+                        <div class="form-group"><input type="tel" name="phone" placeholder="Phone (Optional)"></div>
                         <div class="form-group">
                             <select name="timeslot" required>
                                 <option value="" disabled selected>Preferred Timeslot (PM)</option>
@@ -683,15 +309,11 @@
                                 <option value="Fri 2pm">Friday 2:00 PM</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <textarea name="message" placeholder="Briefly describe your needs..." required></textarea>
-                        </div>
+                        <div class="form-group"><textarea name="message" placeholder="Briefly describe your needs..." required></textarea></div>
                         <button type="submit" id="submit-btn" class="submit-btn">Send Request</button>
                         <p id="form-status" style="margin-top: 8px; font-size: 0.85rem; display: none;"></p>
                     </form>
                 </div>
-
-                <!-- Option 2: Email Reveal -->
                 <div class="contact-method email-reveal">
                     <h3>Email Directly</h3>
                     <p>Prefer to email? Click below to reveal my address.</p>
@@ -706,19 +328,12 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 ReVive Craniosacral Therapy | Forest of Dean. All rights reserved.</p>
-            
-            <!-- Combined Credits Line -->
             <div class="lumo-credit" style="flex-direction: row; align-items: center; gap: 15px; font-size: 0.8rem; color: #888; margin-top: 5px;">
-                <!-- Lumo Part -->
                 <div style="display: flex; align-items: center; gap: 6px;">
                     <img src="images/proton-lumo.svg" alt="Lumo AI Logo" class="lumo-logo-small">
                     <span>Website code and styles generated by Lumo AI</span>
                 </div>
-                
-                <!-- Separator -->
                 <span style="opacity: 0.5;">•</span>
-                
-                <!-- Image Credits Part -->
                 <div style="display: flex; align-items: center; gap: 4px;">
                     <span>Photo by</span>
                     <a href="https://unsplash.com/@aaronburden?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" style="color: #888; text-decoration: underline; font-size: 0.8rem;">Aaron Burden</a>
@@ -737,27 +352,20 @@
             const emailDisplay = document.getElementById('email-display');
             emailDisplay.textContent = email;
             emailDisplay.style.display = 'block';
-            
             navigator.clipboard.writeText(email).then(() => {
-                setTimeout(() => {
-                    alert('Email copied to clipboard!');
-                }, 100);
+                setTimeout(() => { alert('Email copied to clipboard!'); }, 100);
             });
         }
 
         document.getElementById('booking-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            
             const btn = document.getElementById('submit-btn');
             const statusMsg = document.getElementById('form-status');
-            
             btn.disabled = true;
             btn.textContent = 'Sending...';
             statusMsg.style.display = 'none';
-
             const serviceID = 'YOUR_SERVICE_ID';
             const templateID = 'YOUR_TEMPLATE_ID';
-
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
                     btn.textContent = 'Sent!';
@@ -765,12 +373,7 @@
                     statusMsg.style.color = '#fff';
                     statusMsg.style.display = 'block';
                     this.reset();
-                    
-                    setTimeout(() => {
-                        btn.disabled = false;
-                        btn.textContent = 'Send Request';
-                        statusMsg.style.display = 'none';
-                    }, 5000);
+                    setTimeout(() => { btn.disabled = false; btn.textContent = 'Send Request'; statusMsg.style.display = 'none'; }, 5000);
                 }, (err) => {
                     btn.disabled = false;
                     btn.textContent = 'Send Request';
@@ -780,7 +383,26 @@
                     console.log(JSON.stringify(err));
                 });
         });
-    </script>
 
+        // --- CONTENT LOADER SCRIPT (Your Efficient Version) ---
+        document.querySelectorAll('[data-include]').forEach(async el => {
+          const file = el.getAttribute('data-include');
+          const section = el.getAttribute('data-section');
+          
+          try {
+            const res = await fetch(file);
+            if (!res.ok) throw new Error();
+            
+            const html = await res.text();
+            const temp = document.createElement('div');
+            temp.innerHTML = html;
+            
+            const content = temp.querySelector(`#${section}`);
+            el.innerHTML = content ? content.innerHTML : '';
+          } catch {
+            el.innerHTML = '';
+          }
+        });
+    </script>
 </body>
 </html>
