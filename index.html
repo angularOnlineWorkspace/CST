@@ -24,17 +24,21 @@
     
     <style>
         /* --- CSS Variables --- */
-        :root {
-            --primary-color: #5D8A8E;
-            --forest-green: #3A5A40;
-            --secondary-color: #F4F1EA;
-            --text-color: #333333;
-            --light-text: #666666;
-            --white: #ffffff;
-            --offer-color: #D9534F;
-            --font-main: 'Montserrat', sans-serif;
-            --font-elegant: 'Cormorant Garamond', serif;
-        }
+:root {
+    --primary-color: #1B4D58;           /* Deep indigo-teal (was muted teal) */
+    --saffron-accent: #E8A033;          /* Warm gold/saffron */
+    --rust-accent: #C65D3B;             /* Warm rust/terracotta */
+    --forest-green: #1B5E4F;            /* Deeper, richer green */
+    --secondary-color: #FAF7F3;         /* Warmer cream (was cool beige) */
+    --text-color: #2C3E50;              /* Darker text for contrast */
+    --light-text: #5A6C7D;              /* Richer gray */
+    --white: #ffffff;
+    --offer-color: #C65D3B;             /* Use rust instead of red */
+    --font-main: 'Montserrat', sans-serif;
+    --font-elegant: 'Cormorant Garamond', serif;
+	  --icon-external: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z'/%3E%3Cpath fill-rule='evenodd' d='M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z'/%3E%3C/svg%3E");
+
+}
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-main); background-color: var(--secondary-color); color: var(--text-color); line-height: 1.6; }
@@ -43,58 +47,127 @@
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         section { padding: 50px 0; }
 
+
+a[href^="http"]:not([href*="yourdomain.com"])::before {
+  content: "";
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-right: 0.25em;
+  background-image: var(--icon-external);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
+}
+
         /* --- Header --- */
-        header { background-color: var(--white); box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        nav { display: flex; justify-content: space-between; align-items: center; height: 60px; }
-        .logo { font-size: 1.4rem; font-weight: 500; color: var(--primary-color); letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
-        .logo-revive { font-family: var(--font-elegant); font-weight: 600; font-size: 1.8rem; color: var(--primary-color); }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { font-size: 0.9rem; font-weight: 500; }
-        .nav-links a:hover { color: var(--primary-color); }
+header { background-color: var(--white); box-shadow: 0 2px 8px rgba(27, 77, 88, 0.12); position: sticky; top: 0; z-index: 1000; }
+nav { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+.logo { font-size: 1.4rem; font-weight: 500; color: var(--primary-color); letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
+.logo-revive { font-family: var(--font-elegant); font-weight: 600; font-size: 1.8rem; color: var(--primary-color); }
+.nav-links { display: flex; gap: 25px; }
+.nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-color); }
+.nav-links a:hover { color: var(--saffron-accent); font-weight: 600; }
 
         /* --- Training Notice --- */
-        .training-notice { background-color: #eef5f5; color: var(--primary-color); text-align: center; padding: 12px 0; font-size: 0.9rem; border-bottom: 1px solid rgba(93, 138, 142, 0.2); }
-        .training-notice strong { font-weight: 600; color: var(--forest-green); }
-        
-        /* Utility class to hide elements dynamically */
-        .hidden { display: none !important; }
+.training-notice { background-color: #E8F4F7; color: var(--primary-color); text-align: center; padding: 12px 0; font-size: 0.9rem; border-bottom: 2px solid var(--saffron-accent); }
+.training-notice strong { font-weight: 600; color: var(--rust-accent); }
+
+.hidden { display: none !important; }
 
         /* --- Hero --- */
-        .hero { position: relative; min-height: 75vh; display: flex; align-items: center; background-image: url('images/hero-sunset2.jpg'); background-size: cover; background-position: center; padding: 0; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, rgba(20, 30, 25, 0.85) 0%, rgba(20, 30, 25, 0.6) 40%, rgba(20, 30, 25, 0.1) 70%, rgba(20, 30, 25, 0) 100%); z-index: 1; }
-        .hero-content { margin-left: 8%; max-width: 600px; width: 100%; position: relative; z-index: 2; padding: 20px 0; }
-        .hero h1 { font-size: 3.5rem; font-weight: 300; margin-bottom: 5px; color: var(--white); line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .hero h1 .revive-word { font-family: var(--font-elegant); font-weight: 600; font-size: 4.2rem; display: block; color: #fff; }
-        .hero h2 { font-size: 1.4rem; font-weight: 400; margin-bottom: 20px; color: #e0f2f1; font-style: italic; text-shadow: 0 1px 5px rgba(0,0,0,0.3); }
-        .hero p { font-size: 1.1rem; color: #f0f0f0; margin-bottom: 30px; line-height: 1.6; max-width: 550px; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
-        .btn { display: inline-block; background-color: var(--primary-color); color: var(--white); padding: 12px 30px; border-radius: 25px; font-weight: 600; transition: background 0.3s ease; cursor: pointer; border: none; font-size: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .btn:hover { background-color: #4a6f72; transform: translateY(-2px); }
+.hero { position: relative; min-height: 75vh; display: flex; align-items: center; background-image: url('images/hero-sunset2.jpg'); background-size: cover; background-position: center; padding: 0; }
+.hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, rgba(27, 77, 88, 0.88) 0%, rgba(27, 77, 88, 0.65) 40%, rgba(27, 77, 88, 0.15) 70%, rgba(27, 77, 88, 0) 100%); z-index: 1; }
+.hero-content { margin-left: 8%; max-width: 600px; width: 100%; position: relative; z-index: 2; padding: 20px 0; }
+.hero h1 { font-size: 3.5rem; font-weight: 300; margin-bottom: 5px; color: var(--white); line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+.hero h1 .revive-word { font-family: var(--font-elegant); font-weight: 600; font-size: 4.2rem; display: block; color: var(--saffron-accent); }
+.hero h2 { font-size: 1.4rem; font-weight: 400; margin-bottom: 20px; color: #E8F4F7; font-style: italic; text-shadow: 0 1px 5px rgba(0,0,0,0.3); }
+.hero p { font-size: 1.1rem; color: #f0f0f0; margin-bottom: 30px; line-height: 1.6; max-width: 550px; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+.btn { display: inline-block; background-color: var(--saffron-accent); color: var(--white); padding: 12px 30px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; box-shadow: 0 4px 12px rgba(232, 160, 51, 0.3); }
+.btn:hover { background-color: var(--rust-accent); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(198, 93, 59, 0.35); }
 
         /* --- Wave Divider --- */
-        .wave-divider { width: 100%; height: 80px; background-image: url('images/wave-divider.jpg'); background-size: cover; background-position: center; opacity: 0.15; mask-image: linear-gradient(to bottom, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%); margin-top: -20px; }
+.wave-divider { width: 100%; height: 80px; background-image: url('images/wave-divider.jpg'); background-size: cover; background-position: center; opacity: 0.15; mask-image: linear-gradient(to bottom, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%); margin-top: -20px; }
 
         /* --- About --- */
-        .about { background-color: var(--white); text-align: center; }
-        .section-title { font-size: 1.8rem; margin-bottom: 15px; color: var(--primary-color); font-weight: 400; }
-        .about p { max-width: 700px; margin: 0 auto; color: var(--light-text); font-size: 0.95rem; }
+.about { background-color: var(--white); text-align: center; }
+.about .container {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  gap: 16px;
+  align-items: center; /* vertically centers image with text */
+  margin: 0 auto;
+}
+.about .leftAlign {
+text-align: left; 
+}
+ .about .leftAlign ul{
+list-style-type: disc;
+}
+
+
+.about img  {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px; /* adjust for more/less roundness */
+   // mask-image: linear-gradient(to right, black, black 75%, transparent);
+//  -webkit-mask-image: linear-gradient(to right, black, black 75%, transparent);
+     mask-image: radial-gradient(
+    ellipse closest-side,
+    black,
+    black 10%,
+    black 70%,
+    transparent
+  );
+  }
+  
+ .cost-location img   {
+  width: 20%;
+  height: auto;
+  object-fit: cover;
+  halign: left;
+  border-radius: 12px; /* adjust for more/less roundness */
+   // mask-image: linear-gradient(to right, black, black 75%, transparent);
+//  -webkit-mask-image: linear-gradient(to right, black, black 75%, transparent);
+     mask-image: radial-gradient(
+    ellipse closest-side,
+    black,
+    black 10%,
+    black 70%,
+    transparent
+  );
+}  
+
+
+  
+}
+ 
+.section-title { font-size: 1.8rem; margin-bottom: 15px; color: var(--primary-color); font-weight: 400; }
+.section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--saffron-accent); margin: 10px auto 0; border-radius: 2px; }
+.about p { max-width: 700px; margin: 0 auto; color: var(--light-text); font-size: 0.95rem; }
 
         /* --- Training Standards --- */
         .training-section { background-color: var(--secondary-color); text-align: center; padding: 40px 0; }
-        .training-logos { display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap; }
+  
+  .training-logos { display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap; }
         .training-logo-item { background: var(--white); padding: 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); width: 180px; text-align: center; }
         .training-logo-item img { max-width: 100%; height: auto; max-height: 100px; object-fit: contain; margin-bottom: 8px; }
         .training-logo-item p { font-size: 0.85rem; color: var(--light-text); font-weight: 500; }
-
+.training-logo-item:hover { transform: translateY(-4px); }
         /* --- Services --- */
         .services { background-color: var(--secondary-color); }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
         .service-card { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s ease; }
         .service-card:hover { transform: translateY(-3px); }
-        .service-icon { width: 100px; height: 100px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; box-shadow: 0 6px 15px rgba(93, 138, 142, 0.2); border: 3px solid var(--secondary-color); }
+        .service-icon { width: 160px; height: 160px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; box-shadow: 0 6px 15px rgba(93, 138, 142, 0.2); border: 3px solid var(--secondary-color); mask-image: radial-gradient(ellipse closest-side, black, black 75%, transparent);}
         .service-icon img { width: 100%; height: 100%; object-fit: cover; }
         .service-card h3 { margin-bottom: 12px; color: var(--primary-color); font-size: 1.2rem; }
         .service-card p { font-size: 0.9rem; }
-
+		    .service-card .gold { color: var(--saffron-accent);font-size:1.2rem;   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);   background: rgba(255, 255, 255, 0.15); padding: 4px 8px;
+  border-radius: 4px;}
+ 
         /* --- Cost & Location --- */
         .cost-location { background-color: var(--white); display: flex; flex-wrap: wrap; gap: 30px; align-items: center; }
         .cost-info { flex: 1; min-width: 300px; }
@@ -107,7 +180,7 @@
         .cost-card p { font-size: 0.9rem; color: var(--light-text); }
         .location-info { flex: 1; min-width: 300px; background: var(--secondary-color); padding: 25px; border-radius: 10px; }
         .location-info h3 { color: var(--primary-color); margin-bottom: 10px; font-family: var(--font-elegant); font-size: 1.3rem; }
-        .map-placeholder { width: 100%; height: 200px; background-color: #ddd; border-radius: 8px; margin-top: 15px; background-image: url('images/map-forest.jpg'); background-size: cover; position: relative; }
+        .map-placeholder { width: 100%; height: 450px; background-color: #ddd; border-radius: 8px; margin-top: 15px;   background-size: cover; position: relative; }
         .map-overlay { background: rgba(255,255,255,0.85); padding: 8px 15px; border-radius: 15px; font-weight: 600; font-size: 0.85rem; }
 
         /* --- Testimonials --- */
@@ -131,10 +204,66 @@
         .email-reveal { text-align: center; }
         .email-reveal p { margin-bottom: 12px; font-size: 0.85rem; }
 
-        /* --- Footer --- */
-        footer { background-color: #2c3e50; color: #aaa; text-align: center; padding: 15px 0; font-size: 0.85rem; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-        .lumo-credit { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: #888; }
-        .lumo-logo-small { height: 18px; width: auto; opacity: 0.7; filter: grayscale(100%) brightness(0.8); }
+ 
+/* --- Footer --- */
+footer { 
+    background: linear-gradient(135deg, #1B4D58 0%, #0F3A44 100%);
+    color: #D4D4D8; 
+    text-align: left; 
+    padding: 30px 0 20px; 
+    font-size: 0.85rem; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 12px;
+   
+}
+
+footer a {
+    color: var(--saffron-accent);
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #F0B860;
+    text-decoration: underline;
+}
+
+.lumo-credit { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    font-size: 0.8rem; 
+    color: #B0B0B8;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(232, 160, 51, 0.2);
+}
+
+.lumo-logo-small { 
+    height: 18px; 
+    width: auto; 
+    opacity: 0.6; 
+    filter: brightness(0.9);
+    transition: opacity 0.3s ease;
+}
+
+.lumo-credit:hover .lumo-logo-small {
+    opacity: 0.8;
+}
+
+/* Footer responsive */
+@media (max-width: 768px) {
+    footer {
+        padding: 25px 15px 15px;
+        font-size: 0.8rem;
+    }
+    
+    .lumo-credit {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
@@ -149,6 +278,325 @@
             .cost-location { flex-direction: column; }
             .service-icon { width: 80px; height: 80px; }
         }
+		
+		
+    .read-more-container {
+      max-width: 700px;
+      margin: 20px 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .more-link {
+      color: #0066cc;
+      cursor: pointer;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    .more-link:hover { color: #004499; }
+	/* --- Expandable Text Styles --- */
+.more-link {
+    color: var(--primary-color);
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.more-link:hover {
+    color: var(--forest-green);
+}
+
+/*
+.section-more-content, .section-less-content, .section-extra-content {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(93, 138, 142, 0.05);
+    border-radius: 6px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.section-more-content.active, .section-less-content.active, .section-extra-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in;
+}
+*/
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.expand-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 5px 0;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.expand-btn:hover {
+    color: var(--forest-green);
+}
+
+/* The clickable link state */
+.reveal-link {
+    color: var(--primary-color);       /* Matches the button background color */
+    font-weight: 600;                  /* Matches button font weight */
+    text-decoration: underline;        /* Underline to indicate interactivity */
+    text-decoration-thickness: 2px;    /* Slightly thicker underline for visibility */
+    text-underline-offset: 3px;        /* Space between text and underline */
+    cursor: pointer;
+    transition: all 0.3s ease;         /* Smooth hover effect */
+    padding: 0 2px;                    /* Slight breathing room */
+    border-radius: 2px;
+}
+
+/* Hover state - matches the button hover color */
+.reveal-link:hover {
+    color: var(--forest-green);        /* Matches the button hover background */
+    background-color: rgba(93, 138, 142, 0.1); /* Subtle highlight matching primary */
+    text-decoration: none;             /* Remove underline on hover for cleaner look */
+    transform: translateY(-1px);       /* Slight lift effect like buttons */
+}
+
+/* Active/Clicked state (optional, for instant feedback) */
+.reveal-link:active {
+    transform: translateY(0);
+    color: var(--forest-green);
+}
+
+/* The final expanded text state (after click) */
+.revealed-text {
+    color: var(--text-color);          /* Normal text color */
+    font-weight: 400;                  /* Normal weight */
+    animation: fadeInExpand 0.4s ease-out;
+    display: inline;                   /* Ensure it flows with surrounding text */
+}
+.revealed-text a {
+       color: var(--forest-green);          /* Normal text color */
+       text-decoration: underline;       
+	font-weight: 400;                  /* Normal weight */
+	
+    animation: fadeInExpand 0.4s ease-out;
+    display: inline;                   /* Ensure it flows with surrounding text */
+}
+/* Animation for the text replacement */
+@keyframes fadeInExpand {
+    from {
+        opacity: 0;
+        transform: translateX(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* training accordian*/
+/*-------------------------------------------*/
+/* --- Focus Mode for Training Items --- */
+/* --- Training Item Focus Mode (Final Fix) --- */
+/* ==================== GENERIC FOCUS SYSTEM ==================== */
+
+/* ==================== GENERIC FOCUS SYSTEM ==================== */
+
+/* === CONTAINERS === */
+.training-logos,
+.services-grid {
+    position: relative;           /* Important for absolute positioning */
+}
+
+/* === DEFAULT CARD STYLES (merge your existing styles) === */
+.training-logo-item,
+.service-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Training logos specific (Flex) */
+.training-logos .training-logo-item {
+    flex: 0 0 calc(16.66666% - 20px);
+    min-width: 220px;
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+}
+
+/* Services specific (Grid) */
+.services-grid .service-card {
+    padding: 30px;
+    text-align: center;
+}
+
+/* === FOCUS MODE - Grey out others === */
+.training-logos.focused-mode .training-logo-item:not(.focus-active),
+.services-grid.focused-mode .service-card:not(.focus-active) {
+    opacity: 0.2;
+    filter: grayscale(70%);
+    transition: all 0.4s ease;
+}
+
+/* === EXPANDED CARD === */
+.training-logos.focused-mode .training-logo-item.focus-active,
+.services-grid.focused-mode .service-card.focus-active {
+    position: absolute;
+    width: 820px !important;
+    max-width: 90vw;
+    padding: 40px;
+    margin: 0;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FAF7F3 100%);
+    box-shadow: 0 30px 70px rgba(27, 77, 88, 0.35), 
+                0 0 0 1px rgba(232, 160, 51, 0.2);
+    border: 2px solid var(--primary-color);
+    border-top: 4px solid var(--saffron-accent);
+  //  text-align: left;
+    z-index: 200;
+    transform-origin: top left;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+                width 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.training-logo-item.focus-active .section-more-content ul,
+.training-logo-item.focus-active .section-more-content ol,
+.service-card.focus-active .section-more-content ul,
+.service-card.focus-active .section-more-content ol {
+    display: block !important;
+    margin: 15px 0 15px 20px;
+    padding: 0;
+    text-align: left;
+    list-style-position: outside;
+}
+ 
+.training-logo-item.focus-active .section-more-content li,
+.service-card.focus-active .section-more-content li {
+ font-size: 0.85rem;
+    line-height: 1.7;
+    display: list-item !important;
+    color: var(--text-color);
+}
+
+/* Bullet point styling */
+.training-logo-item.focus-active .section-more-content ul,
+.service-card.focus-active .section-more-content ul {
+    list-style-type: disc;
+}
+
+.training-logo-item.focus-active .section-more-content ul li::marker,
+.service-card.focus-active .section-more-content ul li::marker {
+    color: var(--saffron-accent);
+    font-weight: 600;
+}
+
+/* Ordered list styling */
+.training-logo-item.focus-active .section-more-content ol,
+.service-card.focus-active .section-more-content ol {
+    list-style-type: decimal;
+}
+
+.training-logo-item.focus-active .section-more-content ol li::marker,
+.service-card.focus-active .section-more-content ol li::marker {
+    color: var(--saffron-accent);
+    font-weight: 600;
+}
+
+
+/* ==================== CONTENT ==================== */
+.section-less-content,
+.section-more-content {
+    transition: opacity 0.3s ease;
+}
+
+.section-more-content {
+    display: none;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+/* Show less by default */
+.training-logo-item:not(.focus-active) .section-less-content,
+.service-card:not(.focus-active) .section-less-content {
+    display: block;
+}
+
+/* Show more when focused */
+.training-logo-item.focus-active .section-more-content,
+.service-card.focus-active .section-more-content {
+    display: block !important;
+    max-height: 3000px;
+    opacity: 1;
+    margin: 10px;
+
+    line-height: 1.8;
+    overflow: visible !important;
+}
+
+/* Hide less when expanded */
+.training-logo-item.focus-active .section-less-content,
+.service-card.focus-active .section-less-content {
+    display: none !important;
+}
+
+/* ==================== BUTTON ==================== */
+.expand-btn {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 6px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.focus-active .expand-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.expand-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .training-logo-item,
+    .service-card {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+    }
+}
+
+#map-container {
+      margin: 20px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+    }
+	
     </style>
 </head>
 <body>
@@ -185,6 +633,8 @@
             <h1 data-include="content/all-text.html" data-section="hero-title"></h1>
             <h2 data-include="content/all-text.html" data-section="hero-subtitle"></h2>
             <p data-include="content/all-text.html" data-section="hero-desc"></p>
+		
+
             <a href="#contact" class="btn">Book a Session</a>
         </div>
     </section>
@@ -195,8 +645,12 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
+				<img src="images/tablework-pic2-CTA.jpg" alt="Hands on Table hold">
+				  <div class="about-content">
             <h2 class="section-title">About the Practice</h2>
+	
             <p data-include="content/all-text.html" data-section="about-text"></p>
+			 
         </div>
     </section>
 
@@ -206,18 +660,48 @@
             <h2 class="section-title">Certified Training Standards</h2>
             <p style="color: var(--light-text); max-width: 600px; margin: 0 auto; font-size: 0.9rem;">Adhering to the highest standards of education and certification.</p>
             <div class="training-logos">
+<div class="training-logo-item" id="ctet-item">
+    <img src="images/Cranio-Logo.png" alt="Cranio Logo">
+    
+    <!-- Short Text (Visible initially) -->
+    <div id="standards-less" class="section-less-content active">
+        <p data-include="content/all-text.html" data-section="ctet-text-short"></p>
+    </div>
+    
+    <!-- Long Text (Hidden initially) -->
+    <div id="standards-more" class="section-more-content">
+        <p data-include="content/all-text.html" data-section="ctet-text-long"></p>
+    </div>
+    
+    <!-- Button calls the fixed function -->
+    <button id="ctet-item-toggle-btn" class="expand-btn" onclick="toggleFocus('ctet-item','.training-logo-item', event,'ctet-text')">More Details..</button>
+</div>
                 <div class="training-logo-item">
-                    <img src="images/Cranio-Logo.png" alt="Cranio Logo">
-                    <p>Certified Techniques</p>
+                    <a href="https://biodynamiccraniosacralinternational.com/standards/"><img src="images/BCTI-logo.png" alt="BCTI Logo"></a>
+                    <p>BCTI Practitioner <br>(Standards of teaching, methods, support and ethics that are grounded in the knowledge and practices developed by key founders)</p>
                 </div>
                 <div class="training-logo-item">
-                    <img src="images/BCTI-logo.png" alt="BCTI Logo">
-                    <p>BCTI Practitioner</p>
+                    <a href="https://www.cnhc.org.uk/what-we-do#Craniosacral_Therapy"><img src="images/CNHC-logo.png" alt="CNHC Logo"></a>
+                    <p>College is CNHCP accredited <br>(set up by the government to protect the public)</p>
                 </div>
-                <div class="training-logo-item">
-                    <img src="images/CNHC-logo.png" alt="CNHC Logo">
-                    <p>CNHCP Registered</p>
+				
+				<div class="training-logo-item">
+                    <img src="images/APNT.jpg" alt="APNT Logo">
+                    <p>College is accredited by Association of Physical and Natural Therapists (Taken over by BCMA) </p>
                 </div>
+				
+								<div class="training-logo-item">
+                   <a href="https://www.the-cma.org.uk/colleges/craniosacral-therapy-educational-trust/"> <img src="images/CMA-logo.jpg" alt="CMA Logo"></a>
+                    <p>College is The Complementary Medical Association accredited <br>(Standards of quality and professionalism in complementary medicine)</p>
+                </div>
+				
+												<div class="training-logo-item">
+                   <a href="https://www.the-cma.org.uk/colleges/craniosacral-therapy-educational-trust/"> <img src="images/CMA-logo.jpg" alt="CMA Logo"></a>
+                    <p>Fully insured </p>
+                </div>
+				
+			
+				
             </div>
         </div>
     </section>
@@ -227,13 +711,28 @@
         <div class="container">
             <h2 class="section-title" style="text-align: center;">Therapeutic Approaches</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card" id="standard-item">
                     <div class="service-icon"><img src="images/service-craniosacral.jpg" alt="Standard"></div>
                     <h3 data-include="content/all-text.html" data-section="service-1-title"></h3>
                     <p data-include="content/all-text.html" data-section="service-1-desc"></p>
+					<br>
+					    <!-- Short Text (Visible initially) -->
+    <div id="standards-less" class="section-less-content active">
+        <p data-include="content/all-text.html" data-section="service-1-text-short"></p>
+    </div>
+    
+    <!-- Long Text (Hidden initially) -->
+    <div id="standards-more" class="section-more-content">
+        <p data-include="content/all-text.html" data-section="service-1-text-long"></p>
+    </div>
+    
+    <!-- Button calls the fixed function -->
+    <button id="service-1a-item-toggle-btn" class="expand-btn" onclick="toggleFocus('standard-item','.service-card', event,'session-detail')">What to expect first session:</button>
+	    <button id="service-1b-item-toggle-btn" class="expand-btn" onclick="toggleFocus('standard-item','.service-card', event,'after-session-detail')">What to after first session:</button>
+	
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><img src="images/service-pediatric.jpg" alt="Pediatric"></div>
+                    <div class="service-icon"><img src="images/service-mindfulness1.jpg" alt="Pediatric"></div>
                     <h3 data-include="content/all-text.html" data-section="service-2-title"></h3>
                     <p data-include="content/all-text.html" data-section="service-2-desc"></p>
                 </div>
@@ -250,8 +749,9 @@
     <section id="cost" class="cost-location">
         <div class="container">
             <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">Cost & Location</h2>
+			
             <div class="cost-info">
-                <div class="cost-card">
+                <div class="cost-card"><img src="images/growing flower.jpg" alt="growing flower">
                     <!-- Dynamic Offer Badge -->
                     <div id="dynamic-offer-badge" class="offer-badge">Introductory Offer</div>
                     <h3>Initial Consultation</h3>
@@ -259,13 +759,43 @@
                         <span class="old-price">£65</span>
                         <span class="new-price">£20</span>
                     </div>
-                    <p>90 minutes. Includes detailed history, assessment, and first treatment. <br><em>Limited availability during training phase.</em></p>
+                    <p>60 minutes. First session includes detailed history. <br><em>Limited availability during training phase.</em></p>	       
                 </div>
+			
             </div>
+			<p>&nbsp;</p>
             <div class="location-info">
                 <h3>Find Us</h3>
-                <p><strong>ReVive Clinic</strong><br>Forest of Dean, Gloucestershire<br>Near the heart of the ancient woodland.</p>
-                <div class="map-placeholder"><div class="map-overlay">Map View: Forest of Dean</div></div>
+                <p><strong>ReVive Clinic</strong><br>Forest of Dean, Gloucestershire<br>Near the heart of the ancient woodland.sjfkjsdjflkdsjflksdjflkjsdlkfjsdlkfjsldkfj kl jflksd flk sdlfj lkj lk</p>
+                <div class="map-placeholder"><div class="map-overlay"><div>
+  <h2>Our Location</h2>
+     <div id="map-container">
+    <iframe id="google-map" 
+            allowfullscreen 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <a id="google-link" href="#" target="_blank" style="font-size: 1.1em;">
+    Open in Google Maps →
+  </a>
+  
+  <script>
+    // ================== CHANGE THIS ==================
+    const address = "Ross-on-wye,UK";
+
+    const encodedAddress = encodeURIComponent(address);
+
+    // Google Maps Embed without API key
+    document.getElementById('google-map').src = 
+      `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
+
+    // Direct link to Google Maps
+    document.getElementById('google-link').href = 
+      `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+  </script>
+  </div></div>
                 <p style="margin-top: 10px; font-size: 0.85rem; color: var(--light-text);">*Exact address provided upon booking.</p>
             </div>
         </div>
@@ -277,11 +807,11 @@
             <h2 class="section-title">Client Experiences</h2>
             <div class="testimonial-card">
                 <p data-include="content/all-text.html" data-section="testimonial-1"></p>
-                <div class="testimonial-author">— Local Client</div>
+                <div class="testimonial-author">— Anonymous Client</div>
             </div>
             <div class="testimonial-card">
                 <p data-include="content/all-text.html" data-section="testimonial-2"></p>
-                <div class="testimonial-author">— Another Client</div>
+                <div class="testimonial-author">— Anonymous Client</div>
             </div>
         </div>
     </section>
@@ -322,6 +852,12 @@
     <!-- Footer -->
     <footer>
         <div class="container">
+		      <div style="align-items: left; gap: 15px; font-size: 0.8rem; color: #888; margin-top: 5px;">
+										<b>Important Medical Disclaimer </b>
+<p>The holistic therapies provided are intended to <i>complement conventional medical care</i> and may be utilised with confidence alongside standard treatments. Please be advised that these services do not constitute a substitute for qualified medical advice, diagnosis, or treatment. </p>
+<p>Individuals are urged to consult their GP or a licensed medical practitioner regarding any health concerns prior to engaging in these therapies. Clients assume full responsibility for their health and wellbeing and are strongly encouraged to seek immediate professional medical guidance if they experience any physical or mental illness or uncertainty regarding their condition.</p>
+ 
+	</div>
             <p>&copy; 2026 ReVive Craniosacral Therapy | Forest of Dean. All rights reserved.</p>
             <div class="lumo-credit" style="flex-direction: row; align-items: center; gap: 15px; font-size: 0.8rem; color: #888; margin-top: 5px;">
                 <div style="display: flex; align-items: center; gap: 6px;">
@@ -330,17 +866,20 @@
                 </div>
                 <span style="opacity: 0.5;">•</span>
                 <div style="display: flex; align-items: center; gap: 4px;">
-                    <span>Photo by</span>
-                    <a href="https://unsplash.com/@aaronburden?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" style="color: #888; text-decoration: underline; font-size: 0.8rem;">Aaron Burden</a>
-                    <span>on</span>
-                    <a href="https://unsplash.com/photos/silhouette-of-man-standing-between-trees-facing-sunlight-G_1V58E0TyM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" style="color: #888; text-decoration: underline; font-size: 0.8rem;">Unsplash</a>
-                </div>
+                    <span>Including photos by</span>
+                    <a href="https://unsplash.com/@aaronburden?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" style="color: #888; text-decoration: underline; font-size: 0.8rem;">Aaron Burden</a>,<a href="https://unsplash.com/@omeganova?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" style="color: #888; text-decoration: underline; font-size: 0.8rem;">Deniz Altindas</a>
+      
+               </div>
             </div>
+
         </div>
     </footer>
 
     <!-- Scripts -->
     <script>
+	
+ 
+	
         // --- 1. Configuration & Dynamic Logic ---
         async function applyConfiguration() {
             try {
@@ -470,6 +1009,335 @@
 
         // Initialize Configuration on Load
         window.addEventListener('DOMContentLoaded', applyConfiguration);
+		
+		// --- 5. Expandable Text Functions ---
+
+/**
+ * Toggle between "more" and "less" content for a section
+ * @param {string} sectionId - The base ID of the section (e.g., 'about')
+ */
+function toggleSection(sectionId) {
+    const lessContent = document.getElementById(`${sectionId}-less`);
+    const moreContent = document.getElementById(`${sectionId}-more`);
+    const toggleBtn = document.getElementById(`${sectionId}-toggle-btn`);
+    
+    if (!lessContent || !moreContent || !toggleBtn) {
+        console.warn(`Toggle elements not found for section: ${sectionId}`);
+        return;
+    }
+    
+    // Toggle active classes
+    if (lessContent.classList.contains('active')) {
+        // Switch to "more" view
+        lessContent.classList.remove('active');
+        moreContent.classList.add('active');
+        toggleBtn.textContent = 'Show Less';
+        toggleBtn.setAttribute('aria-expanded', 'true');
+    } else {
+        // Switch to "less" view
+        moreContent.classList.remove('active');
+        lessContent.classList.add('active');
+        toggleBtn.textContent = 'Read More';
+        toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+}
+
+/**
+ * One-way expansion to extra info (replaces text and link permanently)
+ * @param {string} sectionId - The base ID of the section (e.g., 'service-1')
+ */
+function expandExtraInfo(sectionId) {
+    const originalContent = document.getElementById(`${sectionId}-original`);
+    const extraContent = document.getElementById(`${sectionId}-extra`);
+    const expandBtn = document.getElementById(`${sectionId}-expand-btn`);
+    
+    if (!originalContent || !extraContent || !expandBtn) {
+        console.warn(`Expand elements not found for section: ${sectionId}`);
+        return;
+    }
+    
+    // Hide original content and button, show extra content
+    originalContent.style.display = 'none';
+    expandBtn.style.display = 'none';
+    extraContent.classList.add('active');
+    
+    // Optional: Scroll to the expanded content
+    extraContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/**
+ * Initialize expandable sections after content loads
+ * This ensures the functions work with dynamically loaded content
+ */
+function initializeExpandableSections() {
+    // Check for any sections that should have expandable content
+    const expandableSections = document.querySelectorAll('[data-expandable]');
+    
+    expandableSections.forEach(section => {
+        const sectionId = section.getAttribute('data-expandable');
+        const hasMoreLess = section.hasAttribute('data-has-toggle');
+        const hasExtraInfo = section.hasAttribute('data-has-extra');
+        
+        // Add toggle button if needed
+        if (hasMoreLess && !document.getElementById(`${sectionId}-toggle-btn`)) {
+            const btn = document.createElement('button');
+            btn.id = `${sectionId}-toggle-btn`;
+            btn.className = 'expand-btn';
+            btn.textContent = 'Read More';
+            btn.onclick = () => toggleSection(sectionId);
+            btn.setAttribute('aria-expanded', 'false');
+            section.appendChild(btn);
+        }
+        
+        // Add expand button if needed
+        if (hasExtraInfo && !document.getElementById(`${sectionId}-expand-btn`)) {
+            const btn = document.createElement('button');
+            btn.id = `${sectionId}-expand-btn`;
+            btn.className = 'expand-btn';
+            btn.textContent = 'Learn More Details';
+            btn.onclick = () => expandExtraInfo(sectionId);
+            section.appendChild(btn);
+        }
+    });
+}
+
+// Initialize after DOM content loads AND after dynamic content loads
+window.addEventListener('DOMContentLoaded', () => {
+    // Wait a bit for dynamic content to load
+    setTimeout(initializeExpandableSections, 500);
+    setTimeout(initDynamicExpandableLinks, 600);	
+});
+
+// --- 6. Dynamic Expandable Links from all-text.html ---
+
+async function initDynamicExpandableLinks() {
+    try {
+        // 1. Fetch the content file
+        const response = await fetch('content/all-text.html');
+        if (!response.ok) throw new Error("Could not load content/all-text.html");
+        
+        const htmlContent = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlContent, 'text/html');
+
+        // 2. Find ALL expand-link elements on the page (including those just loaded)
+        const expandLinks = document.querySelectorAll('expand-link');
+
+        expandLinks.forEach(linkElement => {
+            // Skip if already processed
+            if (linkElement.dataset.processed === 'true') return;
+            
+            const shortId = linkElement.getAttribute('data-short-id');
+            const longId = linkElement.getAttribute('data-long-id');
+
+            if (!shortId || !longId) {
+                console.warn('Missing data-short-id or data-long-id on expand-link element.');
+                return;
+            }
+
+            // 3. Extract the text from all-text.html
+            const shortNode = doc.getElementById(shortId);
+            const longNode = doc.getElementById(longId);
+
+            if (!shortNode || !longNode) {
+                console.warn(`Could not find text IDs: ${shortId} or ${longId}`);
+                return;
+            }
+
+            const shortText = shortNode.textContent.trim();
+            const longText = longNode.innerHTML;
+
+            // 4. Create the clickable link element
+            const linkSpan = document.createElement('span');
+            linkSpan.className = 'reveal-link';
+            linkSpan.textContent = shortText;
+            linkSpan.style.cursor = 'pointer';
+            
+            // 5. Define the click behavior
+            linkSpan.addEventListener('click', function() {
+                // Create the new text node with the long version
+                const expandedText = document.createElement('span');
+                expandedText.className = 'revealed-text';
+                expandedText.innerHTML = longText;
+                expandedText.style.fontWeight = 'normal';
+
+                // Replace the link with the expanded text
+                this.parentNode.replaceChild(expandedText, this);
+            });
+
+            // 6. Replace the original <expand-link> tag with our new link
+            linkElement.parentNode.replaceChild(linkSpan, linkElement);
+            
+            // Mark as processed
+            linkSpan.dataset.processed = 'true';
+        });
+
+    } catch (error) {
+        console.error("Error initializing dynamic expandable links:", error);
+    }
+}
+
+// --- 7. Watch for content loading and trigger expand-link processing ---
+
+ 
+
+// Option B: Re-run whenever content is loaded via data-include
+// This catches expand-links that were loaded dynamically from all-text.html
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length > 0) {
+            // Check if any new nodes contain expand-link elements
+            const hasExpandLink = Array.from(mutation.addedNodes).some(node => 
+                node.nodeType === 1 && 
+                (node.tagName === 'EXPAND-LINK' || node.querySelector?.('expand-link'))
+            );
+            
+            if (hasExpandLink) {
+                setTimeout(initDynamicExpandableLinks, 300);
+            }
+        }
+    });
+});
+
+// Start observing the body for new content
+observer.observe(document.body, { childList: true, subtree: true });
+
+
+// --- 8. Special Focus Mode for Training Items ---
+
+// --- Fixed Training Focus Logic ---
+
+// --- Final Training Focus Logic ---
+ async function toggleFocus(sectionId, cardClass = '.training-logo-item', event, elementName) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    const targetItem = document.getElementById(sectionId)?.closest(cardClass);
+    const container = targetItem?.closest('.training-logos') || 
+                     targetItem?.parentElement;   // fallback
+
+    if (!targetItem || !container) return;
+
+    const btn = document.getElementById(`${sectionId}-toggle-btn`);
+    const moreContent = targetItem.querySelector('.section-more-content');
+    const lessContent = targetItem.querySelector('.section-less-content');
+
+    const isFocused = targetItem.classList.contains('focus-active');
+
+    if (isFocused) {
+        // === CLOSE ===
+        targetItem.style.transform = 'scale(1)';
+
+        setTimeout(() => {
+            targetItem.classList.remove('focus-active');
+            container.classList.remove('focused-mode');
+            targetItem.style.transform = '';
+
+        // Show more content
+        if (moreContent) {
+            lessContent.style.display = 'block';
+            lessContent.style.maxHeight = '100px';
+            lessContent.style.opacity = '1';
+        }
+        if (lessContent) {
+            moreContent.style.display = 'none';
+        }
+		
+		
+            if (btn && btn.dataset.originalText) {
+                btn.textContent = btn.dataset.originalText;
+            }
+        }, 60);
+
+    } else {
+        // === OPEN ===
+        // Close any other active items
+        container.querySelectorAll('.focus-active').forEach(item => {
+            item.classList.remove('focus-active');
+            const otherBtn = item.querySelector('.expand-btn');
+            if (otherBtn && otherBtn.dataset.originalText) {
+                otherBtn.textContent = otherBtn.dataset.originalText;
+            }
+        });
+
+        // Save original button text
+        if (btn) {
+            if (!btn.dataset.originalText) {
+                btn.dataset.originalText = btn.textContent.trim();
+            }
+            btn.textContent = 'Close';
+        }
+
+        // Activate
+        targetItem.classList.add('focus-active');
+        container.classList.add('focused-mode');
+
+
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is outside the expanded div
+    const btn = document.getElementById(`${sectionId}-toggle-btn`);
+        const focusActiveElement = document.querySelector('.focus-active');
+    const focusedContainer = document.querySelector('.focused-mode');
+    if (focusActiveElement && focusedContainer) {
+        // If click is NOT on the expanded element and NOT on a child of it, close it
+        if (!focusActiveElement.contains(event.target)) {
+		        const buttonFocusActiveElement = document.querySelector('.focus-active Button');
+             buttonFocusActiveElement.click();
+        }
+    }
+});
+	
+
+
+        // Show more content
+        if (moreContent) {
+            moreContent.style.display = 'block';
+            moreContent.style.maxHeight = '3000px';
+            moreContent.style.opacity = '1';
+		 
+			const htmlReturned = await  getContentFromContentFile(elementName+"-long");
+			
+			moreContent.innerHTML  =htmlReturned;
+        }
+        if (lessContent) {
+            lessContent.style.display = 'none';
+        }
+
+        // Trigger expansion
+        setTimeout(() => {
+            targetItem.style.transform = 'scale(1.05)';
+        }, 30);
+    }
+}
+
+
+async function getContentFromContentFile(elementId) {
+  try {
+    const response = await fetch('content/all-text.html');
+    const html = await response.text();
+    
+    // Create a temporary container to parse the HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    
+    // Find the element by ID
+    const element = doc.getElementById(elementId);
+    
+    if (element) {
+      return element.innerHTML; // Returns just the inner HTML
+      // OR use: return element.cloneNode(true); // Returns the element itself
+    } else {
+      console.warn(`Element with ID "${elementId}" not found in all-text.html`);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error loading content file:', error);
+    return null;
+  }
+}
+
     </script>
 </body>
 </html>
