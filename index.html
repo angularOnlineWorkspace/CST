@@ -123,21 +123,30 @@ list-style-type: disc;
   );
   }
   
- .cost-location img   {
-  width: 20%;
-  height: auto;
-  object-fit: cover;
-  halign: left;
-  border-radius: 12px; /* adjust for more/less roundness */
-   // mask-image: linear-gradient(to right, black, black 75%, transparent);
-//  -webkit-mask-image: linear-gradient(to right, black, black 75%, transparent);
-     mask-image: radial-gradient(
-    ellipse closest-side,
-    black,
-    black 10%,
-    black 70%,
-    transparent
+  
+  .cost-card h3,
+.cost-card .price-container,
+.cost-card p,
+.cost-card .offer-badge {
+    /* These elements will stack vertically inside the right column */
+    margin: 0;
+}
+.offer-badge {
+    margin-bottom: 10px;
+}
+ .cost-card img   {
+ 
+    width: 220px;
+    height: 220px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 12px;
+    mask-image: radial-gradient(ellipse closest-side, black, black 90%, black 40%, transparent);
+//  -webkit-mask-image: radial-gradient(ellipse closest-side, black, black 90%, black 40%, transparent);
+ 
   );
+  
+  
 }  
 
 
@@ -171,12 +180,16 @@ list-style-type: disc;
         /* --- Cost & Location --- */
         .cost-location { background-color: var(--white); display: flex; flex-wrap: wrap; gap: 30px; align-items: center; }
         .cost-info { flex: 1; min-width: 300px; }
-        .cost-card { background: var(--secondary-color); padding: 25px; border-radius: 10px; border-left: 4px solid var(--primary-color); position: relative; }
+        .cost-card { background: var(--secondary-color); padding: 25px; border-radius: 10px; border-left: 4px solid var(--primary-color); position: relative;
+    display: flex;          /* Enables the side-by-side layout */
+    align-items: flex-start; /* Aligns image and text to the top */
+    gap: 20px;              /* Adds space between image and text */		}
         .cost-card h3 { color: var(--primary-color); margin-bottom: 8px; font-family: var(--font-elegant); font-size: 1.3rem; }
         .offer-badge { display: inline-block; background-color: var(--offer-color); color: white; padding: 3px 10px; border-radius: 15px; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; }
         .price-container { display: flex; align-items: baseline; gap: 12px; margin: 10px 0; }
         .old-price { font-size: 1.1rem; color: #999; text-decoration: line-through; }
         .new-price { font-size: 2rem; font-weight: 700; color: var(--offer-color); }
+		 .free-price { font-size: 1.1rem; font-weight: 700; color: #999; }
         .cost-card p { font-size: 0.9rem; color: var(--light-text); }
         .location-info { flex: 1; min-width: 300px; background: var(--secondary-color); padding: 25px; border-radius: 10px; }
         .location-info h3 { color: var(--primary-color); margin-bottom: 10px; font-family: var(--font-elegant); font-size: 1.3rem; }
@@ -597,6 +610,24 @@ footer a:hover {
       border: none;
     }
 	
+	.Establishing 
+	{
+    color: var(--saffron-accent);
+    font-weight: 600;
+	font-style: italic; 
+	}
+	.logo .Establishing 
+	{
+	position: relative; bottom: -0.5em; font-size: 50%;
+	}
+	.cost-location .Establishing 
+	{
+ 
+	 display: block;
+	}
+	
+	
+	
     </style>
 </head>
 <body>
@@ -606,7 +637,7 @@ footer a:hover {
         <div class="container">
             <nav>
                 <div class="logo">
-                    <span class="logo-revive">ReVive</span> Craniosacral Therapy
+                    <span class="logo-revive">ReVive</span> Craniosacral Therapy <span class="Establishing">[June 2026: CPD Phase]</span>
                 </div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
@@ -751,22 +782,31 @@ footer a:hover {
             <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">Cost & Location</h2>
 			
             <div class="cost-info">
-                <div class="cost-card"><img src="images/growing flower.jpg" alt="growing flower">
+                <div class="cost-card">
+				<img src="images/growing flower.jpg" alt="growing flower">
+				 <div class="text-content">
+				 
                     <!-- Dynamic Offer Badge -->
                     <div id="dynamic-offer-badge" class="offer-badge">Introductory Offer</div>
                     <h3>Initial Consultation</h3>
                     <div class="price-container">
                         <span class="old-price">£65</span>
                         <span class="new-price">£20</span>
+					 
+						  
                     </div>
+					
                     <p>60 minutes. First session includes detailed history. <br><em>Limited availability during training phase.</em></p>	       
+					
+					 Note for local residents: <span class="Establishing">  <span class="free-price">Free *</span>   (*Free if you live on Howle Hill but you have to provide a suitable space for the session to take place)</span>
+					</div>
                 </div>
 			
             </div>
 			<p>&nbsp;</p>
             <div class="location-info">
                 <h3>Find Us</h3>
-                <p><strong>ReVive Clinic</strong><br>Forest of Dean, Gloucestershire<br>Near the heart of the ancient woodland.sjfkjsdjflkdsjflksdjflkjsdlkfjsdlkfjsldkfj kl jflksd flk sdlfj lkj lk</p>
+                <p><strong>ReVive Clinic</strong><br>Ross-on-wye, Gloucestershire<br><span class="Establishing">Current being established after training phases are completed.</span></p>
                 <div class="map-placeholder"><div class="map-overlay"><div>
   <h2>Our Location</h2>
      <div id="map-container">
@@ -943,7 +983,7 @@ footer a:hover {
 
         // --- 2. Email Reveal Function ---
         function revealEmail() {
-            const emailParts = ['av', 'revivingcraniosacral', 'com'];
+            const emailParts = ['enquiries.pnlmi', 'aleeas', 'com'];
             const email = emailParts[0] + '@' + emailParts[1] + '.' + emailParts[2];
             const emailDisplay = document.getElementById('email-display');
             emailDisplay.textContent = email;
