@@ -61,6 +61,11 @@ a[href^="http"]:not([href*="yourdomain.com"])::before {
   vertical-align: middle;
 }
 
+
+html {
+    scroll-padding-top: 80px; /* Replace 80px with the actual height of your top bar */
+    scroll-behavior: smooth;  /* Optional: Makes the scroll animation smooth */
+}
         /* --- Header --- */
 header { background-color: var(--white); box-shadow: 0 2px 8px rgba(27, 77, 88, 0.12); position: sticky; top: 0; z-index: 1000; }
 nav { display: flex; justify-content: space-between; align-items: center; height: 60px; }
@@ -88,7 +93,7 @@ nav { display: flex; justify-content: space-between; align-items: center; height
 .btn:hover { background-color: var(--rust-accent); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(198, 93, 59, 0.35); }
 
         /* --- Wave Divider --- */
-.wave-divider { width: 100%; height: 80px; background-image: url('images/wave-divider.jpg'); background-size: cover; background-position: center; opacity: 0.15; mask-image: linear-gradient(to bottom, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%); margin-top: -20px; }
+.wave-divider { width: 100%; height: 80px; background-image: url('images/hero-sunset2.jpg'); background-size: cover; background-position: bottom; opacity: 0.25; mask-image: linear-gradient(to bottom, black 50%, transparent 90%); -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%); margin-top: -20px; border-top: 25px solid var(--saffron-accent);}
 
         /* --- About --- */
 .about { background-color: var(--white); text-align: center; }
@@ -709,26 +714,30 @@ footer a:hover {
 </div>
                 <div class="training-logo-item">
                     <a href="https://biodynamiccraniosacralinternational.com/standards/"><img src="images/BCTI-logo.png" alt="BCTI Logo"></a>
-                    <p>BCTI Practitioner <br>(Standards of teaching, methods, support and ethics that are grounded in the knowledge and practices developed by key founders)</p>
-                </div>
+                    <p>BCTI Practitioner <br> 
+					 <p data-include="content/all-text.html" data-section="BCTI-standards-text"></p> 
+
+			   </div>
                 <div class="training-logo-item">
                     <a href="https://www.cnhc.org.uk/what-we-do#Craniosacral_Therapy"><img src="images/CNHC-logo.png" alt="CNHC Logo"></a>
-                    <p>College is CNHCP accredited <br>(set up by the government to protect the public)</p>
+					 <p data-include="content/all-text.html" data-section="CNHC-standards-text"></p> 
+               
                 </div>
 				
 				<div class="training-logo-item">
                     <img src="images/APNT.jpg" alt="APNT Logo">
-                    <p>College is accredited by Association of Physical and Natural Therapists (Taken over by BCMA) </p>
+                    <p>CTET College is accredited by Association of Physical and Natural Therapists (Taken over by BCMA) </p>
                 </div>
 				
 								<div class="training-logo-item">
                    <a href="https://www.the-cma.org.uk/colleges/craniosacral-therapy-educational-trust/"> <img src="images/CMA-logo.jpg" alt="CMA Logo"></a>
-                    <p>College is The Complementary Medical Association accredited <br>(Standards of quality and professionalism in complementary medicine)</p>
+				   		 <p data-include="content/all-text.html" data-section="CMA-standards-text"></p> 
+						 
                 </div>
 				
 												<div class="training-logo-item">
-                   <a href="https://www.the-cma.org.uk/colleges/craniosacral-therapy-educational-trust/"> <img src="images/CMA-logo.jpg" alt="CMA Logo"></a>
-                    <p>Fully insured </p>
+                   <a href="https://www.the-cma.org.uk/colleges/craniosacral-therapy-educational-trust/"> <img src="images/holistic-insurance.png" alt="holistic-insurance Logo"></a>
+                    <p>Fully insured <span class="Establishing">(PENDING)</span> </p>
                 </div>
 				
 			
@@ -798,7 +807,7 @@ footer a:hover {
 					
                     <p>60 minutes. First session includes detailed history. <br><em>Limited availability during training phase.</em></p>	       
 					
-					 Note for local residents: <span class="Establishing">  <span class="free-price">Free *</span>   (*Free if you live on Howle Hill but you have to provide a suitable space for the session to take place)</span>
+					 Note for local residents: <span class="Establishing">  <span class="free-price">Free *</span>   (*Free if you live on Howle Hill but you have to provide a suitable space for the session to take place. Table and all other materials will be provided by the Practitioner)</span>
 					</div>
                 </div>
 			
