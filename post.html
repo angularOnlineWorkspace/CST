@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Insight Journal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap');
+        
+        :root {
+            --primary: #1a365d;
+            --accent: #e63939;
+            --text: #333333;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: #fff;
+        }
+        
+        header {
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+            text-decoration: none; 
+        }
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 4rem;
+        }
+        
+        .article-content {
+            max-width: 760px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        
+        .category {
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+        
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            line-height: 1.1;
+            margin: 1rem 0 1.5rem;
+            color: var(--primary);
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 2.5rem;
+        }
+        
+        .featured-image {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+        
+        .article-body {
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+        
+        .article-body p {
+            margin-bottom: 1.8rem;
+        }
+        
+        .article-body h2 {
+            font-family: 'Playfair Display', serif;
+            margin: 2.8rem 0 1.2rem;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        /* Error State - Main Content */
+        .content-error {
+            background: #f8f9fa;
+            border: 2px dashed #ddd;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 8px;
+            color: #666;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 3rem;
+        }
+        
+        .sidebar h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .recent-post {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+        
+        .recent-post.unavailable {
+            opacity: 0.65;
+        }
+        
+        .recent-post img {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .recent-post h4 {
+            font-size: 1.05rem;
+            line-height: 1.35;
+        }
+        
+        .recent-post a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .status {
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-top: 4px;
+        }
+        
+        .status.available {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.unavailable {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        footer {
+            background: #111;
+            color: #ddd;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+        
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Insight Journal</a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Main Article -->
+        <div class="article-content">
+            <a href="index.html" class="back-link">← Back to All Stories</a>
+            
+            <div id="category" class="category"></div>
+            <h1 id="title" class="article-title"></h1>
+            <div id="meta" class="article-meta"></div>
+            <img id="featured-image" class="featured-image" alt="">
+            
+            <div id="content" class="article-body"></div>
+        </div>
+
+        <!-- Sidebar: Recent Posts -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Latest Stories</h3>
+                <div id="recent-posts"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Insight Journal • Independent Journalism</p>
+    </footer>
+
+    <script>
+        let allPosts = [];
+
+        async function checkContentExists(contentFile) {
+            try {
+                const response = await fetch(contentFile, { method: 'HEAD' });
+                return response.ok;
+            } catch {
+                return false;
+            }
+        }
+
+        async function loadBlogData() {
+            try {
+                const response = await fetch('blog-data.json');
+                const data = await response.json();
+                allPosts = data.posts;
+                
+                const urlParams = new URLSearchParams(window.location.search);
+                const postId = parseInt(urlParams.get('id'));
+                
+                const post = allPosts.find(p => p.id === postId) || allPosts[0];
+                
+                renderPost(post);
+                renderRecentPosts(post.id);
+            } catch (error) {
+                console.error('Error loading blog data:', error);
+            }
+        }
+
+        async function renderPost(post) {
+            document.getElementById('page-title').textContent = `${post.title} | Insight Journal`;
+            document.getElementById('category').textContent = post.category;
+            document.getElementById('title').textContent = post.title;
+            document.getElementById('featured-image').src = post.image;
+            
+            document.getElementById('meta').innerHTML = `
+                By ${post.author} • ${post.date} • ${post.readTime}
+            `;
+
+            const contentDiv = document.getElementById('content');
+            
+            try {
+                const contentResponse = await fetch(post.contentFile);
+                
+                if (!contentResponse.ok) throw new Error('Not found');
+                
+                const contentHTML = await contentResponse.text();
+                contentDiv.innerHTML = contentHTML;
+            } catch (e) {
+                contentDiv.innerHTML = `
+                    <div class="content-error">
+                        <h3>Content Not Yet Published</h3>
+                        <p>This full article is still being prepared and will be available soon.</p>
+                        <p style="margin-top:1rem; font-size:0.95rem;">
+                            <strong>Expected file:</strong> ${post.contentFile}
+                        </p>
+                    </div>
+                `;
+            }
+        }
+
+        async function renderRecentPosts(currentPostId) {
+            const container = document.getElementById('recent-posts');
+            let html = '';
+            
+            const recent = allPosts
+                .filter(p => p.id !== currentPostId)
+                .slice(0, 6);
+            
+            for (const post of recent) {
+                const exists = await checkContentExists(post.contentFile);
+                
+                html += `
+                    <div class="recent-post ${exists ? '' : 'unavailable'}">
+                        <img src="${post.image}" alt="${post.title}">
+                        <div>
+                            <h4><a href="post.html?id=${post.id}">${post.title}</a></h4>
+                            <small style="color:#777;">${post.date}</small>
+                            <div class="status ${exists ? 'available' : 'unavailable'}">
+                                ${exists ? 'Available' : 'Coming Soon'}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
+        }
+
+        window.onload = loadBlogData;
+    </script>
+</body>
+</html>

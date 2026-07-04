@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insight Journal | Professional Publication</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap');
+        
+        :root {
+            --primary: #1a365d;
+            --accent: #e63939;
+            --text: #333333;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #ffffff;
+        }
+        
+        header {
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            max-width: 800px;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 4rem;
+        }
+        
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .post-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: white;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+        
+        .post-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .post-content {
+            padding: 1.5rem;
+        }
+        
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.8rem;
+        }
+        
+        .post-category {
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .post-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            line-height: 1.3;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .post-excerpt {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 3rem;
+        }
+        
+        .sidebar h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .popular-post {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .popular-post img {
+            width: 90px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .popular-post h4 {
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+        
+        footer {
+            background: #111;
+            color: #ddd;
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Insight Journal</a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">World</a></li>
+                    <li><a href="#">Politics</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Science</a></li>
+                    <li><a href="#">Culture</a></li>
+                </ul>
+            </nav>
+            <div>
+                <button onclick="toggleSearch()" style="background:none;border:none;font-size:1.4rem;cursor:pointer;">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <!-- Dynamically populated by JS -->
+    </section>
+
+    <main>
+        <div>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 2rem; color: var(--primary);">Latest Stories</h2>
+            <div class="posts-grid" id="posts-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Popular This Week</h3>
+                <div id="popular-posts">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Newsletter</h3>
+                <p style="margin-bottom: 1rem;">Stay informed with our weekly digest of the most important stories.</p>
+                <input type="email" placeholder="Your email address" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:4px; margin-bottom:0.8rem;">
+                <button onclick="subscribe()" style="width:100%; padding:0.8rem; background:var(--accent); color:white; border:none; border-radius:4px; font-weight:600;">Subscribe</button>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Categories</h3>
+                <ul style="list-style:none;">
+                    <li style="padding:0.6rem 0; border-bottom:1px solid #eee;"><a href="#" style="text-decoration:none; color:inherit;">Climate &amp; Environment</a></li>
+                    <li style="padding:0.6rem 0; border-bottom:1px solid #eee;"><a href="#" style="text-decoration:none; color:inherit;">Technology</a></li>
+                    <li style="padding:0.6rem 0; border-bottom:1px solid #eee;"><a href="#" style="text-decoration:none; color:inherit;">Global Economy</a></li>
+                    <li style="padding:0.6rem 0; border-bottom:1px solid #eee;"><a href="#" style="text-decoration:none; color:inherit;">Arts &amp; Culture</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Insight Journal</h4>
+                <p>Independent journalism since 1998. Seeking truth in an age of noise.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul style="list-style:none; line-height:2;">
+                    <li><a href="#" style="color:#ddd; text-decoration:none;">About Us</a></li>
+                    <li><a href="#" style="color:#ddd; text-decoration:none;">Our Team</a></li>
+                    <li><a href="#" style="color:#ddd; text-decoration:none;">Ethics</a></li>
+                    <li><a href="#" style="color:#ddd; text-decoration:none;">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <p>Twitter • Instagram • LinkedIn • YouTube</p>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:3rem; opacity:0.6; font-size:0.9rem;">
+            © 2026 Insight Journal. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        let posts = [];
+        
+        async function loadBlogData() {
+            try {
+                posts = [
+                    {
+                        id: 1,
+                        title: "The New Geopolitics of AI: How Nations Are Racing for Supremacy",
+                        excerpt: "As artificial intelligence reshapes every industry, governments worldwide are investing billions in strategic technologies.",
+                        date: "July 3, 2026",
+                        author: "Dr. Elena Vargas",
+                        category: "Technology",
+                        image: "https://picsum.photos/id/1015/800/600",
+                        featured: true
+                    },
+                    {
+                        id: 2,
+                        title: "Climate Tipping Points: Scientists Warn of Irreversible Changes",
+                        excerpt: "New research reveals accelerating feedback loops in the Arctic that could accelerate global warming beyond current projections.",
+                        date: "July 2, 2026",
+                        author: "Marcus Chen",
+                        category: "Environment",
+                        image: "https://picsum.photos/id/1016/800/600",
+                        featured: false
+                    },
+                    {
+                        id: 3,
+                        title: "The Quiet Revolution in Central Banking",
+                        excerpt: "How digital currencies and algorithmic policy are transforming monetary systems around the world.",
+                        date: "July 1, 2026",
+                        author: "Priya Patel",
+                        category: "Business",
+                        image: "https://picsum.photos/id/201/800/600",
+                        featured: false
+                    },
+                    {
+                        id: 4,
+                        title: "Reimagining Cities for the Post-Pandemic Era",
+                        excerpt: "Urban planners are redesigning public spaces with resilience, equity, and human connection at their core.",
+                        date: "June 30, 2026",
+                        author: "Jamal Wright",
+                        category: "Culture",
+                        image: "https://picsum.photos/id/133/800/600",
+                        featured: false
+                    },
+                    {
+                        id: 5,
+                        title: "Quantum Computing Breakthrough Brings Practical Applications Closer",
+                        excerpt: "A European consortium achieves error-corrected qubits, marking a milestone toward commercial viability.",
+                        date: "June 28, 2026",
+                        author: "Dr. Sofia Mendes",
+                        category: "Science",
+                        image: "https://picsum.photos/id/180/800/600",
+                        featured: false
+                    }
+                ];
+                
+                renderHero();
+                renderPosts();
+                renderPopularPosts();
+            } catch (error) {
+                console.error('Failed to load blog data:', error);
+            }
+        }
+        
+        function renderHero() {
+            const featured = posts.find(p => p.featured) || posts[0];
+            const heroHTML = `
+                <div class="hero-content">
+                    <div class="hero-badge">${featured.category}</div>
+                    <h1>${featured.title}</h1>
+                    <p>${featured.excerpt}</p>
+                    <div style="display:flex; align-items:center; gap:1rem; font-size:0.95rem;">
+                        <span>By ${featured.author}</span>
+                        <span>•</span>
+                        <span>${featured.date}</span>
+                    </div>
+                    <a href="#" class="btn" style="margin-top:2rem;">Read Full Story</a>
+                </div>
+            `;
+            document.getElementById('hero').innerHTML = heroHTML;
+        }
+        
+        function renderPosts() {
+            const grid = document.getElementById('posts-grid');
+            let html = '';
+            
+            posts.forEach(post => {
+                html += `
+                    <article class="post-card">
+                        <div class="post-image" style="background-image: url('${post.image}')"></div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">${post.category}</span>
+                                <span>${post.date}</span>
+                            </div>
+                            <h3 class="post-title">${post.title}</h3>
+                            <p class="post-excerpt">${post.excerpt}</p>
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-size:0.9rem; color:#777;">By ${post.author}</span>
+                                <a href="#" class="read-more">Continue →</a>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            });
+            
+            grid.innerHTML = html;
+        }
+        
+        function renderPopularPosts() {
+            const container = document.getElementById('popular-posts');
+            let html = '';
+            
+            posts.slice(0, 3).forEach(post => {
+                html += `
+                    <div class="popular-post">
+                        <img src="${post.image}" alt="${post.title}">
+                        <div>
+                            <h4><a href="#" style="text-decoration:none; color:inherit;">${post.title}</a></h4>
+                            <small style="color:#888;">${post.date}</small>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        function toggleSearch() {
+            alert("Search functionality would open here in a full implementation.");
+        }
+        
+        function subscribe() {
+            alert("Thank you for subscribing to Insight Journal!");
+        }
+        
+        window.onload = loadBlogData;
+    </script>
+</body>
+</html>

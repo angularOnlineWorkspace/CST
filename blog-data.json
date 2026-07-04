@@ -1,0 +1,82 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "slug": "new-geopolitics-of-ai",
+      "title": "The New Geopolitics of AI: How Nations Are Racing for Supremacy",
+      "excerpt": "As artificial intelligence reshapes every industry, governments worldwide are investing billions in strategic technologies.",
+      "date": "July 3, 2026",
+      "author": "Dr. Elena Vargas",
+      "category": "Technology",
+      "image": "https://picsum.photos/id/1015/800/600",
+      "readTime": "12 min read",
+      "featured": true,
+      "contentFile": "articles/article-1.html"
+    },
+    {
+      "id": 2,
+      "slug": "climate-tipping-points",
+      "title": "Climate Tipping Points: Scientists Warn of Irreversible Changes",
+      "excerpt": "New research reveals accelerating feedback loops in the Arctic that could accelerate global warming beyond current projections.",
+      "date": "July 2, 2026",
+      "author": "Marcus Chen",
+      "category": "Environment",
+      "image": "https://picsum.photos/id/1016/800/600",
+      "readTime": "8 min read",
+      "featured": false,
+      "contentFile": "articles/article-2.html"
+    },
+    {
+      "id": 3,
+      "slug": "quiet-revolution-central-banking",
+      "title": "The Quiet Revolution in Central Banking",
+      "excerpt": "How digital currencies and algorithmic policy are transforming monetary systems around the world.",
+      "date": "July 1, 2026",
+      "author": "Priya Patel",
+      "category": "Business",
+      "image": "https://picsum.photos/id/201/800/600",
+      "readTime": "10 min read",
+      "featured": false,
+      "contentFile": "articles/article-3.html"
+    },
+    {
+      "id": 4,
+      "slug": "reimagining-cities-post-pandemic",
+      "title": "Reimagining Cities for the Post-Pandemic Era",
+      "excerpt": "Urban planners are redesigning public spaces with resilience, equity, and human connection at their core.",
+      "date": "June 30, 2026",
+      "author": "Jamal Wright",
+      "category": "Culture",
+      "image": "https://picsum.photos/id/133/800/600",
+      "readTime": "9 min read",
+      "featured": false,
+      "contentFile": "articles/article-4.html"
+    },
+    {
+      "id": 5,
+      "slug": "quantum-computing-breakthrough",
+      "title": "Quantum Computing Breakthrough Brings Practical Applications Closer",
+      "excerpt": "A European consortium achieves error-corrected qubits, marking a milestone toward commercial viability.",
+      "date": "June 28, 2026",
+      "author": "Dr. Sofia Mendes",
+      "category": "Science",
+      "image": "https://picsum.photos/id/180/800/600",
+      "readTime": "7 min read",
+      "featured": false,
+      "contentFile": "articles/article-5.html"
+    },
+    {
+      "id": 6,
+      "slug": "future-of-work-automation",
+      "title": "The Future of Work in the Age of Intelligent Automation",
+      "excerpt": "How AI and robotics are reshaping labor markets and what it means for workers and policymakers.",
+      "date": "June 27, 2026",
+      "author": "Thomas Berger",
+      "category": "Business",
+      "image": "https://picsum.photos/id/251/800/600",
+      "readTime": "11 min read",
+      "featured": false,
+      "contentFile": "articles/article-6.html"
+    }
+  ]
+}
